@@ -34,13 +34,13 @@ class Header extends Component {
         <nav className="navbar bg-primary navbar-light">
           <a class="navbar-brand" href="#" className="text-white">
           Tunicata
-            <1--<img
-              src={Tunicata_logo}
+            <img
+              src={}
               className="img-fluid"
               width="100"
               height="50"
               alt="Tunicata"
-            />-->
+            />
             <span className="badge rounded-pill bg-light text-dark ml-2" />
           </a>
         </nav>
