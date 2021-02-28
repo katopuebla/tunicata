@@ -1,10 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { Adelita } from "../catalogs.json";
 
 function Catalogs() {
-  this.state = { Adelita };
-
-  const todos = this.state.Adelita.map((catalog, i) => {
+  const todos = Adelita.map((catalog, i) => {
     return (
       <div className="col md-4" key={i}>
         <div className="card">
