@@ -14,12 +14,13 @@ function Home() {
         <Image
           className="d-block w-100"
           src={catalog.url}
-          alt="First slide"
+          alt="slide"
+          width="55px"
           thumbnail
         />
         <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          <h3>{catalog.title}</h3>
+          <p>{catalog.description}</p>
         </Carousel.Caption>
       </Carousel.Item>
     );
