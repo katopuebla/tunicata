@@ -13,6 +13,43 @@
       "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FAdelitas%2F20210226_140624.jpg?alt=media&token=b5d982d6-61e3-49ce-b44d-176eb4555412",
       "description": "Plallera con mimo",
       "price": "$ 20.00"
+    },
+    {
+       "title": "PLayera 3",
+      "name": "20210226_141137.jpg",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FAdelitas%2F20210226_141137.jpg?alt=media&token=bccda30e-d3e1-45a5-8a39-26d1eb1c1429",
+      "description": "Plallera con pino",
+      "price": "$ 25.00"
+    },
+    {
+       "title": "PLayera 4",
+      "name": "20210226_143048.jpg",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FAdelitas%2F20210226_143048.jpg?alt=media&token=c093e59a-4855-4034-92f5-51e2330a2e4b",
+      "description": "Plallera con lino",
+      "price": "$ 20.50"
+    }
+  ],
+  "Pet_Lovers" :[
+    {
+      "title": "PLayera 1",
+      "name": "20210226_144901.jpg",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FPet_Lovers%2F20210226_144901.jpg?alt=media&token=342df1ce-f512-4d73-9699-1518c6ae08ff",
+      "description": "Playera de temporada",
+      "price": "$ 10.00"
+    },
+    {
+       "title": "PLayera 2",
+      "name": "20210226_144424.jpg",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FPet_Lovers%2F20210226_144424.jpg?alt=media&token=d9488268-b851-4027-aa1b-9825f7951cf8",
+      "description": "Plallera con mimo",
+      "price": "$ 20.00"
+    },
+    {
+       "title": "PLayera 3",
+      "name": "20210226_144901.jpg",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FPet_Lovers%2F20210226_144901.jpg?alt=media&token=342df1ce-f512-4d73-9699-1518c6ae08ff",
+      "description": "Plallera con pino",
+      "price": "$ 25.00"
     }
   ]
 }
