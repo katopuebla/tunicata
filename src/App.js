@@ -5,6 +5,7 @@ import { todos } from "./data.json";
 
 // subComponents
 import Header from "./components/header";
+import Home from "./components/home";
 import TodoForm from "./components/TodoForm";
 
 class App extends Component {
@@ -13,9 +14,9 @@ class App extends Component {
     this.state = {
       todos
     };
-    this.handleAddTodo = this.handleAddTodo.bind(this);
+    // this.handleAddTodo = this.handleAddTodo.bind(this);
   }
-
+  /*
   handleAddTodo(todo) {
     this.setState({
       todos: [...this.state.todos, todo]
@@ -31,9 +32,9 @@ class App extends Component {
       });
     }
   }
-
+*/
   render() {
-    const todos = this.state.todos.map((todo, i) => {
+    /*  const todos = this.state.todos.map((todo, i) => {
       return (
         <div className="col md-4" key={i}>
           <div className="card">
@@ -60,7 +61,7 @@ class App extends Component {
           </div>
         </div>
       );
-    });
+    });*/
 
     return (
       <div>
@@ -68,11 +69,11 @@ class App extends Component {
         <div className="container">
           <div className="row mt-4">
             <div className="col-md-4 text-center">
-              <TodoForm onAddTodo={this.handleAddTodo} />
+              <Home />
             </div>
 
             <div className="col-md-8">
-              <div className="row mt-4">{todos}</div>
+              <div className="row mt-4">holas </div>
             </div>
           </div>
         </div>
