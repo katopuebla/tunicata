@@ -1,11 +1,13 @@
 import React, { Component } from "react";
 import "./style.css";
+import { storage } from "../firebase";
 
 import { todos } from "./data.json";
 
 // subComponents
 import Header from "./components/header";
 import Home from "./components/home";
+import Catalogs from "./components/catalogs";
 import TodoForm from "./components/TodoForm";
 
 class App extends Component {
@@ -67,15 +69,8 @@ class App extends Component {
       <div>
         <Header />
         <div className="container">
-          <div className="row mt-4">
-            <div className="col-md-4 text-center">
-              <Home />
-            </div>
-
-            <div className="col-md-8">
-              <div className="row mt-4">holas </div>
-            </div>
-          </div>
+          <Home />
+          <Catalogs />
         </div>
       </div>
     );

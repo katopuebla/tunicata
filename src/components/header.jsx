@@ -1,18 +1,25 @@
 import React, { Component } from "react";
-
-//import { Tunicata_logo } from "../images/Tunicata_logo.png";
+import { storage } from "../firebase";
 
 class Header extends Component {
   constructor() {
     super();
     this.state = {
-      title: "",
+      logo: "",
       responsible: "",
       description: "",
       priority: "low"
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+
+    storage
+      .ref("images")
+      .child("Tunicata_logo.png")
+      .getDownloadURL()
+      .then(urlResult => {
+        this.setState({ logo: urlResult });
+      });
   }
 
   handleInput(e) {
@@ -31,28 +38,33 @@ class Header extends Component {
   render() {
     return (
       <div>
-        <nav className="navbar bg-primary navbar-light">
-          <a class="navbar-brand" href="#" className="text-white">
-          Tunicata
+        <nav className="navbar navbar-expand-sm bg-primary navbar-dark">
+          <a class="navbar-brand" href="#">
             <img
-              src={}
+              src={this.state.logo}
               className="img-fluid"
-              width="100"
-              height="50"
+              width="25"
               alt="Tunicata"
             />
-            <span className="badge rounded-pill bg-light text-dark ml-2" />
           </a>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                Inicio
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                Catalogos
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                About
+              </a>
+            </li>
+          </ul>
         </nav>
-        <div className="container">
-          <div className="row mt-4">
-            <div className="col-md-4 text-center" />
-
-            <div className="col-md-8">
-              <div className="row mt-4" />
-            </div>
-          </div>
-        </div>
       </div>
     );
   }
