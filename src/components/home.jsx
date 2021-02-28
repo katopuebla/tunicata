@@ -1,19 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Container, Carousel, Jumbotron, Image } from "react-bootstrap";
 //import { storage } from "../firebase";
-import { Carrusel } from "../catalogs.json";
+import { Carrusels } from "../catalogs.json";
 
 function Home() {
   const imageMain =
     "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FTunicata.jpg?alt=media&token=06ef0868-51b0-42b1-a7b9-1bf819e4b813";
-    const [image, setImage] = useState(null);
   
-  /*
   const [carrusel, setCarrusel] = useState([{}]);
-
-  const catalogos = Carrusel.map((catalog, i) => {
+// ****** BEGINNING OF CHANGE ******
+  useEffect(() => {
+        setCarrusel(Carrusels);
+  }, []);
+  // ****** END OF CHANGE ******
+  const catalogos = carrusel.map((catalog) => {
     return (
-      /*<Carousel.Item>
+      <Carousel.Item>
         <Image
           className="d-block w-100"
           src={catalog.url}
@@ -25,18 +27,21 @@ function Home() {
           <h3>{catalog.title}</h3>
           <p>{catalog.description}</p>
         </Carousel.Caption>
-      </Carousel.Item>* /
+      </Carousel.Item>
     );
   });
 
-  */
+  
   return (
     <Container>
-       <Image
+       {/*<Image
           src={imageMain}
           alt="slide"
          thumbnail
-        />
+        />*/}
+      <Carousel>
+        {catalogos}
+      </Carousel>
       <div>
         <p>Esta página está diseñada para mostrar los catalogos</p>
         <blockquote className="blockquote">
