@@ -10,29 +10,23 @@ function Home() {
 
   const catalogos = Carrusel.map((catalog, i) => {
     return (
-      <Carousel>
-        <Carousel.Item interval={1000}>
-          <img className="d-block w-100" src={catalog.url} alt="First slide" />
-          <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-          </Carousel.Caption>
-        </Carousel.Item>
-      </Carousel>
+      <Carousel.Item>
+        <Image
+          className="d-block w-100"
+          src={catalog.url}
+          alt="First slide"
+          thumbnail
+        />
+        <Carousel.Caption>
+          <h3>First slide label</h3>
+          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+        </Carousel.Caption>
+      </Carousel.Item>
     );
   });
   return (
     <Container>
-      {catalogos}
-      <Jumbotron>
-        <Image
-          src={imageMain}
-          alt="logo"
-          width="350px"
-          className="mx-auto d-block"
-        />
-      </Jumbotron>
-
+      <Carousel>{catalogos}</Carousel>
       <div>
         <p>Esta página está diseñada para mostrar los catalogos</p>
         <blockquote className="blockquote">
