@@ -3,21 +3,23 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Home from "./home";
+import Catalogs from "./catalogs";
+import About from "./about";
 
 // Páginas internas
-function Home() {
+function linkHome() {
   return <Home />;
 }
 
-function About() {
-  return <h2>About</h2>;
+function linkCatalogs() {
+  return <Catalogs />;
 }
 
-function Users() {
-  return <h2>Users</h2>;
+function linkAbout() {
+  return <About />;
 }
 
-function Login() {
+function linkLogin() {
   return <h2>Login</h2>;
 }
 
@@ -68,10 +70,9 @@ class Header extends Component {
               </li>
             </ul>
           </nav>
-          // Anclado de rutas al contenido
-          <Route path="/" exact component={Home} />
-          <Route path="/about/" component={About} />
-          <Route path="/users/" component={Users} />
+          <Route path="/" exact component={linkHome} />
+          <Route path="/about/" component={linkCatalogs} />
+          <Route path="/users/" component={linkAbout} />
           {/*<Route path="/" exact component={Login} />*/}
         </div>
       </Router>

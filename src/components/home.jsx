@@ -2,17 +2,11 @@ import React, { useState } from "react";
 import { storage } from "../firebase";
 
 function Home() {
+  const imageMain =
+    "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FTunicata.jpg?alt=media&token=06ef0868-51b0-42b1-a7b9-1bf819e4b813";
   const [image, setImage] = useState(null);
   const [url, setUrl] = useState("");
   const [progress, setProgress] = useState(0);
-
-  storage
-    .ref("images")
-    .child("Tunicata.jpg")
-    .getDownloadURL()
-    .then(url => {
-      setUrl(url);
-    });
 
   const imageUpdate = storage.ref(`images/x`).put(image);
   imageUpdate.on(
@@ -41,7 +35,12 @@ function Home() {
     <div>
       <div className="jumbotron">
         <div class="container">
-          <img src={url} alt="logo" width="350px" class="mx-auto d-block" />
+          <img
+            src={imageMain}
+            alt="logo"
+            width="350px"
+            class="mx-auto d-block"
+          />
         </div>
       </div>
 

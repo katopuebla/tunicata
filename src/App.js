@@ -16,10 +16,6 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <div className="container">
-          <Home />
-          <Catalogs onCatalogs="Adelita" />
-        </div>
       </div>
     );
   }
