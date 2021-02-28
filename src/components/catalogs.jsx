@@ -1,16 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { Adelita } from "../catalogs.json";
+import { Card } from "react-bootstrap";
+import { Adelita, Pet_Lovers } from "../catalogs.json";
 
-function Catalogs(props) {
+function Catalogs({ name }) {
   const [catalogs, setCatalogs] = useState([{}]);
-  const catalog = props.onCatalogs;
+  const catalog = name;
 
   // ****** BEGINNING OF CHANGE ******
   useEffect(() => {
     // Should not ever set state during rendering, so do this in useEffect instead.
+
+    console.log(catalog);
     switch (catalog) {
       case "Adelita":
         setCatalogs(Adelita);
+        break;
+      case "Pet_Lovers":
+        setCatalogs(Pet_Lovers);
+        break;
       default:
         setCatalogs(Adelita);
     }
@@ -20,24 +27,16 @@ function Catalogs(props) {
   const catalogos = catalogs.map((catalog, i) => {
     return (
       <div className="col md-4" key={i}>
-        <div className="card">
-          <div className="card-header">
-            <h3>{catalog.title}</h3>
-            {/*<span className="badge rounded-pill bg-danger ml-2">x</span>*/}
-          </div>
-          <div className="card-body">
-            <img
-              src={catalog.url}
-              alt={catalog.title}
-              width="250px"
-              class="mx-auto d-block"
-            />
+        <Card style={{ width: "15rem" }}>
+          <Card.Img ariant="top" src={catalog.url} />
+          <Card.Body>
+            <Card.Title>{catalog.title}</Card.Title>
+            <Card.Text>
+              {catalog.description}
 
-            <p>{catalog.description}</p>
-            <p>
               <mark>{catalog.price}</mark>
-            </p>
-          </div>
+            </Card.Text>
+          </Card.Body>
           {/*<div className="card-footer">
               <button
                 className="btn btn-danger"
@@ -46,7 +45,7 @@ function Catalogs(props) {
                 Delete
               </button>
             </div>*/}
-        </div>
+        </Card>
       </div>
     );
   });

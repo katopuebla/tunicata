@@ -1,31 +1,11 @@
 import React, { Component } from "react";
+import { Nav, NavDropdown, Navbar } from "react-bootstrap";
 //import { storage } from "../firebase";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Home from "./home";
 import Catalogs from "./catalogs";
 import About from "./about";
-
-// Páginas internas
-function linkHome() {
-  return <Home />;
-}
-
-function linkCatalogs_Adelita() {
-  return <Catalogs />;
-}
-
-function linkCatalogs_PetLover() {
-  return <Catalogs onCatalogs="Pet_Lovers" />;
-}
-
-function linkAbout() {
-  return <About />;
-}
-
-function linkLogin() {
-  return <h2>Login</h2>;
-}
 
 class Header extends Component {
   constructor() {
@@ -46,45 +26,45 @@ class Header extends Component {
   render() {
     return (
       <Router>
-        <div>
-          <nav className="navbar navbar-expand-sm bg-primary navbar-dark">
-            <a class="navbar-brand" href="#">
-              <img
-                src={this.state.logo}
-                className="img-fluid"
-                width="25"
-                alt="Tunicata"
-              />
-            </a>
-            <ul class="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="/">
-                  Inicio
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/catalogs_Adelita/">
-                  Catalogos Adelita
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/catalogs_PetLover/">
-                  Catalogos Pet Lovers
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/about/">
-                  About
-                </a>
-              </li>
-            </ul>
-          </nav>
-          <Route path="/" exact component={linkHome} />
-          <Route path="/catalogs_Adelita/" component={linkCatalogs_Adelita} />
-          <Route path="/catalogs_PetLover/" component={linkCatalogs_PetLover} />
-          <Route path="/about/" component={linkAbout} />
-          {/*<Route path="/" exact component={Login} />*/}
-        </div>
+        <Navbar bg="primary" variant="dark">
+          <Navbar.Brand href="#home">
+            <img
+              src={this.state.logo}
+              width="30"
+              className="d-inline-block align-top"
+              alt="Tunicata"
+            />
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="mr-auto">
+              <Nav.Link href="/">Inicio</Nav.Link>
+              <NavDropdown title="Catalogos" id="collasible-nav-dropdown">
+                <NavDropdown.Item href="/catalogs/Adelita/">
+                  Adelita
+                </NavDropdown.Item>
+                <NavDropdown.Item href="/catalogs/Pet_Lovers/">
+                  Pet Lovers
+                </NavDropdown.Item>
+              </NavDropdown>
+            </Nav>
+            <Nav>
+              <Nav.Link href="/about/">About</Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Navbar>
+
+        <Route path="/" exact component={Home} />
+        <Route path="/catalogs/Adelita/">
+          <Catalogs name="Adelita" />
+        </Route>
+        <Route path="/catalogs/Pet_Lovers/">
+          <Catalogs name="Pet_Lovers" />
+        </Route>
+        <Route path="/about/">
+          <About />
+        </Route>
+        {/*<Route path="/" exact component={Login} />*/}
       </Router>
     );
   }

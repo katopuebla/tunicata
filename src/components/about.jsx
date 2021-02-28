@@ -1,8 +1,9 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 
 function About() {
   return (
-    <div className="container">
+    <Container>
       <p>¿Quienes somos?</p>
       <blockquote class="blockquote">
         <p>
@@ -11,7 +12,7 @@ function About() {
         </p>
         <footer class="blockquote-footer">buscanos por watss.</footer>
       </blockquote>
-    </div>
+    </Container>
   );
 }
 

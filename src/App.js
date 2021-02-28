@@ -1,11 +1,9 @@
 import React, { Component } from "react";
 import "./style.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-// subComponents
+//Components
 import Header from "./components/header";
-import Home from "./components/home";
-import Catalogs from "./components/catalogs";
 
 class App extends Component {
   constructor() {
