@@ -26,7 +26,7 @@ function Catalogs({ name }) {
 
   const catalogos = catalogs.map((catalog, i) => {
     return (
-      <div className="col md-4" key={i}>
+      <div className="col md-6" key={i}>
         <Card style={{ width: "15rem" }}>
           <Card.Img ariant="top" src={catalog.url} />
           <Card.Body>
