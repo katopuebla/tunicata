@@ -15,23 +15,23 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <footer class="bg-warning text-center text-lg-start">
+        <footer class="bg-info text-center text-lg-start text-white">
           <div className="text-center p-3">
             <h5>Tunicata Diseño</h5> Entregas de 1 a 2 días bajo pedido,
             {" llámanos al  "}
             <FaPhone />
-            <a href="tel:55-40803355"> (55) 40803355</a>
+            <a href="tel:22-24890610"> (22) 2 489 0610</a>
             {" ó por mensaje al "}
             <FaWhatsapp />
-            <a href="https://api.whatsapp.com/send?phone=5540803355">
+            <a href="https://api.whatsapp.com/send?phone=2224890610">
               {"   "}
-              (55) 40803355
+              (22)2 48 90610
             </a>
             {" también por correo al  "}
             <FaEnvelope />
-            <a href="mailto:elcorreoquequieres@correo.com">
+            <a href="mailto:tunicatadisenos@gmail.com">
               {"  "}
-              correo@example.com
+             tunicatadisenos@gmail.com 
             </a>
           </div>
           <div> Siguenos en:</div>

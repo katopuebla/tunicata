@@ -41,7 +41,7 @@ class Header extends Component {
           </Navbar.Brand>
         </Navbar>
         <Router>
-          <Navbar bg="warning" variant="light">
+          <Navbar bg="info" variant="light">
             <Navbar.Brand href="#home">
               <img
                 src={this.state.logo}
