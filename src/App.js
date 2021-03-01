@@ -15,7 +15,7 @@ class App extends Component {
     return (
       <div>
         <Header />
-        <footer class="bg-info text-center text-lg-start text-white">
+        <footer class="text-center text-lg-start">
           <div className="text-center p-3">
             <h5>Tunicata Diseño</h5> Entregas de 1 a 2 días bajo pedido,
             {" llámanos al  "}

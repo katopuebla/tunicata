@@ -13,6 +13,27 @@ body {
   background: linear-gradient(
     to right,
     #86fde8,
-    #acb6e5
+    #ace5
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ * /
 }*/
+
+Nav {
+  background: #ffc168;
+}
+
+footer {
+  background: #87CEEB;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
