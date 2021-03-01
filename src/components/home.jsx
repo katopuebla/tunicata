@@ -37,6 +37,10 @@ function Home() {
   function handleAdelitaClick() {
     history.push("/catalogs/Adelita/");
   }
+
+  function handlePerLoverClick() {
+    history.push("/catalogs/Pet_Lovers/");
+  }
   
   return (
     <Container>
@@ -73,7 +77,7 @@ function Home() {
       </Col>
       <Col md-6 >
         <Card style={{ width: "10rem" }}>
-        <Button variant="link" type="button" onClick={handleAdelitaClick}>
+        <Button variant="link" type="button" onClick={handlePerLoverClick}>
           <Card.Img ariant="top" src={Pet_Lovers[0].url} />
           </Button>
           <Card.Body>
