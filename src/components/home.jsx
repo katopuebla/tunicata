@@ -65,7 +65,7 @@ function Home() {
         </blockquote>
       </div>
       <Row>
-      <Col md-6 >
+      <Col>
         <Card style={{ width: "10rem" }}>
         <Button variant="link" type="button" onClick={handleAdelitaClick}>
           <Card.Img ariant="top" src={Adelita[0].url} />
@@ -75,7 +75,7 @@ function Home() {
           </Card.Body>
         </Card>
       </Col>
-      <Col md-6 >
+      <Col>
         <Card style={{ width: "10rem" }}>
         <Button variant="link" type="button" onClick={handlePerLoverClick}>
           <Card.Img ariant="top" src={Pet_Lovers[0].url} />

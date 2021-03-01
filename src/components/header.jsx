@@ -41,11 +41,11 @@ class Header extends Component {
           </Navbar.Brand>
         </Navbar>
         <Router>
-          <Navbar variant="light">
+          <Navbar variant="light" expand="md">
             <Navbar.Brand href="#home">
               <img
                 src={this.state.logo}
-                width="35"
+                width="30"
                 className="d-inline-block align-top"
                 alt="Tunicata"
               />
