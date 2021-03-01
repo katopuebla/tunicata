@@ -21,7 +21,7 @@ class App extends Component {
             {" al  "}
             <FaPhone />
             <a href="tel:55-40803355"> (55) 40803355</a>
-            {" por "}  
+            {" por "}
             <FaWhatsapp />
             <a href="https://api.whatsapp.com/send?phone=5540803355">
               {"   "}
