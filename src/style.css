@@ -17,23 +17,31 @@ body {
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ * /
 }*/
 
-Nav {
-  background: #ffc168;
+.bg-orange {
+  background-color: #ff8c00;
+}
+
+.msg-green {
+  background-color: #0df338;
 }
 
 footer {
-  background: #87CEEB;
+  /* Like the header, the footer will have a static height - it shouldn't grow or shrink.  */
+  /* 0 flex-grow, 0 flex-shrink, auto flex-basis */
+  flex: 0 0 auto;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+.cmn-divfloat {
+  position: fixed !important;
+  bottom: 45px;
+  right: 15px;
+  display: none;
+}
+.cmn-btncircle {
+  width: 40px !important;
+  height: 40px !important;
+  padding: 6px 0px;
+  border-radius: 15px;
+  font-size: 18px;
+  text-align: center;
+}
