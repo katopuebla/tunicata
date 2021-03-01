@@ -18,7 +18,7 @@ body {
 }*/
 
 .bg-orange {
-  background: linear-gradient(to bottom, #ff8c00, white);
+  background: linear-gradient(to bottom, #ff8c00, #FEF9E7);
 }
 
 .msg-green {
