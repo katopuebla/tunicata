@@ -17,12 +17,12 @@ body {
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ * /
 }*/
 
-.bg-orange {
-  background: #0df338;
+.bg-green {
+  background: #86b404;
 }
 
-.bg-orange-dif {
-  background: linear-gradient(to bottom, #0df338, #fef9e7);
+.bg-green-dif {
+  background: linear-gradient(to bottom, #86b404, #fef9e7);
 }
 
 .msg-green {

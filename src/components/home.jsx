@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import { FaAngleRight, FaWhatsapp } from "react-icons/fa";
 import {
   Container,
   Carousel,
@@ -83,7 +84,7 @@ function Home() {
               <Card.Img ariant="top" src={Pet_Lovers[0].url} />
             </Button>
             <Card.Body>
-              <Card.Title>Pet Lovers</Card.Title>
+              <Card.Title>Can&Mini</Card.Title>
             </Card.Body>
           </Card>
         </Col>

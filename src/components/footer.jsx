@@ -4,7 +4,7 @@ import { FaEnvelope, FaWhatsapp, FaPhone } from "react-icons/fa";
 function Footer() {
   return (
     <container>
-      <footer className="text-center text-lg-start bg-orange">
+      <footer className="text-center text-lg-start bg-green">
         <div className="text-center ">
           Entregas de 1 a 2 días bajo pedido,
           {" llámanos al  "}

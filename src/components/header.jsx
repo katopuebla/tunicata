@@ -30,7 +30,6 @@ class Header extends Component {
   render() {
     return (
       <Container>
-      
         <Navbar bg="light" variant="dark">
           <Navbar.Brand href="#home">
             <img
@@ -42,14 +41,14 @@ class Header extends Component {
           </Navbar.Brand>
         </Navbar>
         <Router>
-          <Navbar className="bg-orange-dif" variant="light" expand="md">
+          <Navbar className="bg-green" variant="light" expand="md">
             <Navbar.Brand href="#home">
-              <img
+              {/*<img
                 src={this.state.logo}
                 width="30"
                 className="d-inline-block align-top"
                 alt="Tunicata"
-              />
+              />*/}
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
