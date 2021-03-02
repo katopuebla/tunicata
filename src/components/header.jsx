@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { Nav, NavDropdown, Navbar, Container } from "react-bootstrap";
+import { Nav, NavDropdown, Navbar, Container, Button } from "react-bootstrap";
 //import { storage } from "../firebase";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Home from "./home";
 import Catalogs from "./catalogs";
@@ -30,6 +30,7 @@ class Header extends Component {
   render() {
     return (
       <Container>
+      
         <Navbar bg="light" variant="dark">
           <Navbar.Brand href="#home">
             <img
@@ -41,7 +42,7 @@ class Header extends Component {
           </Navbar.Brand>
         </Navbar>
         <Router>
-          <Navbar variant="light" expand="md">
+          <Navbar className="bg-orange-dif" variant="light" expand="md">
             <Navbar.Brand href="#home">
               <img
                 src={this.state.logo}

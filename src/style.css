@@ -18,11 +18,15 @@ body {
 }*/
 
 .bg-orange {
-  background: linear-gradient(to bottom, #ff8c00, #FEF9E7);
+  background: #0df338;
+}
+
+.bg-orange-dif {
+  background: linear-gradient(to bottom, #0df338, #fef9e7);
 }
 
 .msg-green {
-  background-color: #0df338;
+  background: #0df338;
 }
 
 footer {
