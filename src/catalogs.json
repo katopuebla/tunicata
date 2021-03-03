@@ -74,5 +74,28 @@
       "description": "Playera con pino",
       "price": "$ 25.00"
     }
+  ],
+  "Can&Michi" :[
+    {
+      "title": "PLayera 1",
+      "name": "20210302_181158.jpg",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FCan%26Michi%2F20210302_181158.jpg?alt=media&token=23d1bce7-e9c4-42ed-99b1-3946c7153cd2",
+      "description": "Playera",
+      "price": "$ 130.00"
+    },
+    {
+       "title": "PLayera 2",
+      "name": "20210302_181427.jpg",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FCan%26Michi%2F20210302_181427.jpg?alt=media&token=d84ff3a7-6bf3-4ce5-aeb5-4362bb8f003c",
+      "description": "Playera ",
+      "price": "$ 130.00"
+    },
+    {
+       "title": "Ronroneo sobre ruedas",
+      "name": "Ronroneo sobre ruedas.jpg",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FCan%26Michi%2FRonroneo%20sobre%20ruedas.jpg?alt=media&token=8dce5f4e-9ebe-425c-8786-9593370dac14",
+      "description": "Playera ",
+      "price": "$ 130.00"
+    }
   ]
 }
