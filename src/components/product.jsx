@@ -12,7 +12,7 @@ function Product({ _product }) {
     },
     imgSize: {
       width: "100%",
-      height: "12vh",
+      height: "10vh",
       objectFit: "cover"
     }
   };
@@ -66,9 +66,9 @@ function Product({ _product }) {
                   src={productDetail.url}
                  
                 />
-                <img
+                <Card.Img
                   src={productDetail.imgSize.url}
-                  style={customStyle.imgSize}
+
                 />
               </Col>
             </Row>
