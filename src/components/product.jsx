@@ -1,6 +1,6 @@
 import React from "react";
-import { Card, Modal, Row, Col } from "react-bootstrap";
-import NumberFormat from "react-number-format";
+import { Card, Modal, Row, Col } from 'react-bootstrap';
+//import NumberFormat from 'react-number-format';
 
 function Product({ _product }) {
   console.log("_product", _product);
@@ -23,13 +23,13 @@ function Product({ _product }) {
                   <blockquote>
                     {productDetail.description}
                     <br />
-                    <NumberFormat
+                    {/*<NumberFormat
                       thousandSeparator={true}
                       prefix={"$"}
                       style="color : 'purple'"
-                    >
+                    >*/}
                       {productDetail.price}
-                    </NumberFormat>
+                    {/*</NumberFormat>*/
                   </blockquote>
                   Talla
                   <blockquote>{productDetail.size}</blockquote>
