@@ -205,7 +205,7 @@
       "name": "20210226_144035.jpg",
       "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FPet_Lovers%2F20210226_144035.jpg?alt=media&token=f2e14f6d-2c9d-4d0c-8763-b9e50aa0b6d5",
       "description": "Playera de temporada",
-      "price": "$ 10.00",
+      "price": "10.00",
       "imgSize": {
         "id": 1,
         "name": "Medinas Bones.jpg",
@@ -245,7 +245,7 @@
       "name": "20210226_144424.jpg",
       "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FPet_Lovers%2F20210226_144424.jpg?alt=media&token=d9488268-b851-4027-aa1b-9825f7951cf8",
       "description": "Playera con mimo",
-      "price": "$ 20.00",
+      "price": "20.00",
       "imgSize": {
         "id": 1,
         "name": "Medinas Bones.jpg",
@@ -281,7 +281,7 @@
       ]
     },
     {
-       "title": "PLayera 3",
+      "title": "PLayera 3",
       "name": "20210226_144901.jpg",
       "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FPet_Lovers%2F20210226_144901.jpg?alt=media&token=342df1ce-f512-4d73-9699-1518c6ae08ff",
       "description": "Playera con pino",

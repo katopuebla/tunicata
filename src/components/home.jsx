@@ -62,7 +62,7 @@ function Home() {
       </div>*/}
       <Row>
         <Col>
-          <Card style={{ width: "10rem" }} key={1}>
+          <Card md-4 key={1}>
             <Button variant="link" type="button" onClick={handleAdelitaClick}>
               <Card.Img ariant="top" src={Adelita[0].url} />
             </Button>
@@ -72,7 +72,7 @@ function Home() {
           </Card>
         </Col>
         <Col>
-          <Card style={{ width: "10rem" }} key={2}>
+          <Card md-4 key={2}>
             <Button variant="link" type="button" onClick={handlePerLoverClick}>
               <Card.Img ariant="top" src={Pet_Lovers[0].url} />
             </Button>

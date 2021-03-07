@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, Button, Modal } from "react-bootstrap";
 import { useParams } from "react-router-dom";
-
+import NumberFormat from "react-number-format";
 import { Adelita, Pet_Lovers } from "../catalogs.json";
 import Product from "./product";
 
@@ -14,7 +14,6 @@ function Catalogs() {
   //functions
   const handleClose = () => setShow(false);
   const handleShow = catalog => {
-    console.log("catalog", catalog);
     setProductDetail(catalog);
     setShow(true);
   };
@@ -35,7 +34,7 @@ function Catalogs() {
 
   const showCatalogos = catalogs.map((catalog, i) => {
     return (
-      <div className="col md-6" key={i}>
+      <div className="col xs={6}" key={i}>
         <Card>
           <Button
             variant="link"
@@ -48,11 +47,21 @@ function Catalogs() {
           </Button>
           <Card.Body>
             <Card.Title>{catalog.title}</Card.Title>
-            <Card.Text>
+            {/*<Card.Text>
               {catalog.description}
 
               <mark>{catalog.price}</mark>
-            </Card.Text>
+            </Card.Text>*/}
+            <b>
+              <NumberFormat
+                thousandSeparator={true}
+                prefix={"$ "}
+                value={catalog.price}
+                displayType={"text"}
+                suffix={" MXN"}
+                style={{ color: "purple" }}
+              />
+            </b>
           </Card.Body>
           {/*<div className="card-footer">
               <button

@@ -14,7 +14,7 @@ function Product({ _product }) {
     },
     imgSize: {
       width: "100%",
-      height: "20vh",
+      height: "22vh",
       objectFit: "cover"
     }
   };
@@ -44,22 +44,23 @@ function Product({ _product }) {
                 {/*<Card.Title>{productDetail.title}</Card.Title>*/}
                 <Card.Text>
                   <b>Diseño:</b> {productDetail.type}
-                  <blockquote>
+                  <br />
                     {productDetail.description}
                     <br />
                     <mark>
                       <b>
                         <NumberFormat
                           thousandSeparator={true}
-                          prefix={"$"}
-                          value={productDetail.price || "MXN"}
+                          prefix={"$ "}
+                          value={productDetail.price}
                           displayType={"text"}
+                          suffix={" MXN"}
                           style={{ color: "purple" }}
                         />
                       </b>
                     </mark>
-                  </blockquote>
-                  Talla
+                   <br />
+                  <b>Talla</b>
                   <blockquote>{sizes}</blockquote>
                   {/*<mark>{productDetail.price}</mark>*/}
                 </Card.Text>
@@ -70,7 +71,10 @@ function Product({ _product }) {
                   bsPrefix
                   style={customStyle.imgSize}
                 />
-                <img src={measue.url} style={productDetail.imgSize.url} />
+                <img
+                  src={productDetail.imgSize.url}
+                  style={customStyle.imgSize}
+                />
               </Col>
             </Row>
           </Card.Body>
