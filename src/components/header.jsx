@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Nav, NavDropdown, Navbar, Container, Button } from "react-bootstrap";
 //import { storage } from "../firebase";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Home from "./home";
 import Catalogs from "./catalogs";
@@ -68,18 +68,16 @@ class Header extends Component {
               </Nav>
             </Navbar.Collapse>
           </Navbar>
-
-          <Route path="/" exact component={Home} />
-          <Route path="/catalogs/Adelita/">
-            <Catalogs name="Adelita" />
-          </Route>
-          <Route path="/catalogs/Pet_Lovers/">
-            <Catalogs name="Pet_Lovers" />
-          </Route>
-          <Route path="/about/">
-            <About />
-          </Route>
-          {/*<Route path="/" exact component={Login} />*/}
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/catalogs/:catalogId/">
+              <Catalogs />
+            </Route>
+            <Route path="/about/">
+              <About />
+            </Route>
+            {/*<Route path="/" exact component={Login} />*/}
+          </Switch>
         </Router>
       </Container>
     );

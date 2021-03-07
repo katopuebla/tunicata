@@ -1,9 +1,10 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 import { FaEnvelope, FaWhatsapp, FaPhone } from "react-icons/fa";
 
 function Footer() {
   return (
-    <container>
+    <Container>
       <footer className="text-center text-lg-start bg-green">
         <div className="text-center ">
           Entregas de 1 a 2 días bajo pedido,
@@ -25,7 +26,7 @@ function Footer() {
         </div>
         <div> Siguenos en:</div>
       </footer>
-    </container>
+    </Container>
   );
 }
 

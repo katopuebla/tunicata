@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { FaAngleRight, FaWhatsapp } from "react-icons/fa";
+
 import {
   Container,
   Carousel,
@@ -14,8 +14,6 @@ import {
 import { Carrusels, Adelita, Pet_Lovers } from "../catalogs.json";
 
 function Home() {
-  const imageMain =
-    "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FTunicata.jpg?alt=media&token=06ef0868-51b0-42b1-a7b9-1bf819e4b813";
   const history = useHistory();
 
   const [carrusel, setCarrusel] = useState([{}]);
@@ -24,9 +22,9 @@ function Home() {
     setCarrusel(Carrusels);
   }, []);
   // ****** END OF CHANGE ******
-  const catalogos = carrusel.map(catalog => {
+  const catalogos = carrusel.map((catalog, index) => {
     return (
-      <Carousel.Item>
+      <Carousel.Item key={index}>
         <Image
           className="d-block w-100"
           src={catalog.url}
@@ -52,13 +50,8 @@ function Home() {
 
   return (
     <Container>
-      {/*<Image
-          src={imageMain}
-          alt="slide"
-         thumbnail
-        />*/}
       <Carousel>{catalogos}</Carousel>
-      <div>
+      {/*<div>
         <p>Esta página está diseñada para mostrar los catalogos</p>
         <blockquote className="blockquote">
           <p>
@@ -66,7 +59,7 @@ function Home() {
             distintos productos para su interes.
           </p>
         </blockquote>
-      </div>
+      </div>*/}
       <Row>
         <Col>
           <Card style={{ width: "10rem" }} key={1}>
@@ -84,7 +77,7 @@ function Home() {
               <Card.Img ariant="top" src={Pet_Lovers[0].url} />
             </Button>
             <Card.Body>
-              <Card.Title>Can&Mini</Card.Title>
+              <Card.Title>Can&Michi</Card.Title>
             </Card.Body>
           </Card>
         </Col>
