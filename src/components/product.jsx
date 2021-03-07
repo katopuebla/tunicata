@@ -10,7 +10,12 @@ function Product({ _product }) {
       border: "5px solid #d9d9d9",
       background: "#d9d9d9"
     },
-    imgSize: {
+    img: {
+      width: "80%",
+      height: "10vh",
+      objectFit: "cover"
+    },
+     imgSize: {
       width: "100%",
       height: "10vh",
       objectFit: "cover"
@@ -32,10 +37,10 @@ function Product({ _product }) {
         <Modal.Title>{productDetail.title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Card>
-          <Card.Body>
+        <Card fluid>
+          <Card.Body fluid>
             <Row>
-              <Col xs={8}>
+              <Col xs={8} md={8}>
                 <Card.Img src={productDetail.url} />
                 {/*<Card.Title>{productDetail.title}</Card.Title>*/}
                 <Card.Text>
@@ -61,14 +66,14 @@ function Product({ _product }) {
                   {/*<mark>{productDetail.price}</mark>*/}
                 </Card.Text>
               </Col>
-              <Col xs={4}>
+              <Col xs={4} md={4}>
                 <Card.Img
                   src={productDetail.url}
-                 
+                 style={customStyle.img}
                 />
                 <Card.Img
                   src={productDetail.imgSize.url}
-
+                  style={customStyle.imgSize}
                 />
               </Col>
             </Row>

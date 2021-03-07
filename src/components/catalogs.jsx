@@ -78,8 +78,8 @@ function Catalogs() {
 
   return (
     <div>
-      <div className="row mt-4">{showCatalogos}</div>
-      <Modal show={show} onHide={handleClose}>
+      <div className="row md-6">{showCatalogos}</div>
+      <Modal fluid show={show} onHide={handleClose}>
         <Product _product={productDetail} />
       </Modal>
     </div>
