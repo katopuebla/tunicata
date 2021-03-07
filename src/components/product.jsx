@@ -11,7 +11,7 @@ function Product({ _product }) {
       background: "#d9d9d9"
     },
     img: {
-      width: "80%",
+      width: "9%",
       height: "10vh",
       objectFit: "cover"
     },
