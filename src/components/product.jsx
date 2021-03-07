@@ -5,27 +5,25 @@ import { Measure } from "../catalogs.json";
 
 function Product({ _product }) {
   const productDetail = _product;
+  const meaures = Measure;
 
   const customStyle = {
-    tableStyle: {
-      borderRadius: 3,
-      fontSize: "xx-small",
-      marginTop: 1,
-      letterSpacing: 3,
-      padding: 4,
-      fontWeight: "bold"
-    },
     sizeStyle: {
-      border: "6px solid #d9d9d9",
+      border: "5px solid #d9d9d9",
       background: "#d9d9d9"
+    },
+    imgSize: {
+      width: "100%",
+      height: "20vh",
+      objectFit: "cover"
     }
   };
 
-  const measue = Measure.findIndex( mesaure => mesaure.type === 'Bones');
+  const measue = meaures.find(mesaure => mesaure.type === "Bones");
 
   const sizes = productDetail.sizes.map((item, index) => {
     return (
-      <span>
+      <span key={index}>
         <span style={customStyle.sizeStyle}>{item.size}</span>
         {"  "}
       </span>
@@ -35,13 +33,13 @@ function Product({ _product }) {
   return (
     <div>
       <Modal.Header closeButton>
-        {/*<Modal.Title>{productDetail.title}</Modal.Title>*/}
+        <Modal.Title>{productDetail.title}</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         <Card>
           <Card.Body>
             <Row>
-              <Col xs={8}>
+              <Col xs={7}>
                 <Card.Img src={productDetail.url} />
                 {/*<Card.Title>{productDetail.title}</Card.Title>*/}
                 <Card.Text>
@@ -54,7 +52,7 @@ function Product({ _product }) {
                         <NumberFormat
                           thousandSeparator={true}
                           prefix={"$"}
-                          value={productDetail.price}
+                          value={productDetail.price || "MXN"}
                           displayType={"text"}
                           style={{ color: "purple" }}
                         />
@@ -66,30 +64,13 @@ function Product({ _product }) {
                   {/*<mark>{productDetail.price}</mark>*/}
                 </Card.Text>
               </Col>
-              <Col xs={4} size="sm">
-                <Card.Img src={productDetail.url} />
-                <Card.Img src={measue.url} />
-                {/*<Table responsive="sm" style={customStyle.tableStyle} size="sm">
-                  <thead>
-                    <tr>
-                      <th>MEDIDAS</th>
-                      <th>ANCHO</th>
-                      <th>LARGO</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>{productDetail.sizes[0].size}</td>
-                      <td>{productDetail.sizes[0].width}</td>
-                      <td>{productDetail.sizes[0].height}</td>
-                    </tr>
-                    <tr>
-                      <td />
-                      <td>'+/- 1cm</td>
-                      <td>'+/- 1cm</td>
-                    </tr>
-                  </tbody>
-                </Table>*/}
+              <Col xs={5}>
+                <Card.Img
+                  src={productDetail.url}
+                  bsPrefix
+                  style={customStyle.imgSize}
+                />
+                <img src={measue.url} style={productDetail.imgSize.url} />
               </Col>
             </Row>
           </Card.Body>
