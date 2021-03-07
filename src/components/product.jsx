@@ -3,7 +3,6 @@ import { Card, Modal, Row, Col } from 'react-bootstrap';
 //import NumberFormat from 'react-number-format';
 
 function Product({ _product }) {
-  console.log("_product", _product);
   const productDetail = _product;
 
   return (
@@ -29,14 +28,15 @@ function Product({ _product }) {
                       style="color : 'purple'"
                     >*/}
                       {productDetail.price}
-                    {/*</NumberFormat>*/
+                    {/*</NumberFormat>*/}
                   </blockquote>
                   Talla
                   <blockquote>{productDetail.size}</blockquote>
                   {/*<mark>{productDetail.price}</mark>*/}
                 </Card.Text>
               </Col>
-                <Table striped bordered hover>
+              <Col>
+               {/*} <Table striped bordered hover>
   <thead>
     <tr>
       <th>MEDIDAS PULGADAS</th>
@@ -57,8 +57,8 @@ function Product({ _product }) {
       <td>@fat</td>
     </tr>
   </tbody>
-</Table>
-              <Col />
+</Table>*/}
+              </Col>
             </Row>
           </Card.Body>
           {/*<div className="card-footer">

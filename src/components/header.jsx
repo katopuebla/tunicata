@@ -16,15 +16,6 @@ class Header extends Component {
       imageMain:
         "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FTunicata.jpg?alt=media&token=06ef0868-51b0-42b1-a7b9-1bf819e4b813"
     };
-
-    /*
-    storage
-      .ref("images")
-      .child("Tunicata_logo.png")
-      .getDownloadURL()
-      .then(urlResult => {
-        this.setState({ logo: urlResult });
-      });*/
   }
 
   render() {
@@ -42,14 +33,7 @@ class Header extends Component {
         </Navbar>
         <Router>
           <Navbar className="bg-green" variant="light" expand="md">
-            <Navbar.Brand href="#home">
-              {/*<img
-                src={this.state.logo}
-                width="30"
-                className="d-inline-block align-top"
-                alt="Tunicata"
-              />*/}
-            </Navbar.Brand>
+            <Navbar.Brand href="#home" />
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="mr-auto">

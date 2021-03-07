@@ -8,17 +8,16 @@ import Product from "./product";
 function Catalogs() {
   const [catalogs, setCatalogs] = useState([{}]);
   let { catalogId } = useParams();
-  //console.log("Topic", catalogId);
   //Modal states
   const [productDetail, setProductDetail] = useState({});
   const [show, setShow] = useState(false);
   //functions
   const handleClose = () => setShow(false);
-  const handleShow = (catalog) => {
-    console.log('catalog', catalog)
+  const handleShow = catalog => {
+    console.log("catalog", catalog);
     setProductDetail(catalog);
     setShow(true);
-  }
+  };
   // ****** BEGINNING OF CHANGE ******
   useEffect(() => {
     switch (catalogId) {
@@ -42,8 +41,8 @@ function Catalogs() {
             variant="link"
             type="button"
             onClick={() => {
-              handleShow(catalog)}
-              }
+              handleShow(catalog);
+            }}
           >
             <Card.Img ariant="top" src={catalog.url} />
           </Button>
@@ -64,7 +63,6 @@ function Catalogs() {
               </button>
             </div>*/}
         </Card>
-
       </div>
     );
   });
@@ -72,10 +70,10 @@ function Catalogs() {
   return (
     <div className="row mt-4">
       {showCatalogos}
-   <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose}>
         <Product _product={productDetail} />
       </Modal>
-  </div>
+    </div>
   );
 }
 
