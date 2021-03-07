@@ -48,19 +48,13 @@ function Product({ _product }) {
     <tr>
       <td>productDetail.size[0].size</td>
       <td>productDetail.size[0].width</td>
-      <td>productDetail.size[0].width</td>
-      <td>@mdo</td>
+      <td>productDetail.size[0].height</td>
     </tr>
     <tr>
-      <td>2</td>
-      <td>Jacob</td>
-      <td>Thornton</td>
+      <td></td>
+      <td>'+/- 1cm</td>
+      <td>'+/- 1cm</td>
       <td>@fat</td>
-    </tr>
-    <tr>
-      <td>3</td>
-      <td colSpan="2">Larry the Bird</td>
-      <td>@twitter</td>
     </tr>
   </tbody>
 </Table>
