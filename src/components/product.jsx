@@ -7,17 +7,20 @@ function Product({ _product }) {
 
   return (
     <div>
-      <Modal.Header closeButton>
+      {/*<Modal.Header closeButton>
         <Modal.Title>{productDetail.title}</Modal.Title>
-      </Modal.Header>
+      </Modal.Header>*/}
       <Modal.Body>
         <Card>
           <Card.Img style={{ width: "18rem" }} src={productDetail.url} />
           <Card.Body>
             <Card.Title>{productDetail.title}</Card.Title>
             <Card.Text>
+              Diseño: {productDetail.type}
               {productDetail.description}
-              {productDetail.Size}
+              {productDetail.price}
+              Talla 
+              {productDetail.size}
 
               {/*<mark>{productDetail.price}</mark>*/}
             </Card.Text>
