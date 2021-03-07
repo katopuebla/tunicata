@@ -22,6 +22,20 @@
       "price": "$ 25.00"
     }
   ],
+  "Measure": [
+    {
+      "id": 1,
+      "name": "Medinas Bones.jpg",
+      "type": "Bones",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FMedidas%20Bones.jpg?alt=media&token=bbce0a37-6a51-4792-a417-0899606667d3"
+    },
+    {
+      "id": 2,
+      "name": "Medinas josua.jpg",
+      "type": "Josua",
+      "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FMedidas%20josua.jpg?alt=media&token=e4f6730a-bcf1-4d62-b32c-d622ebd632ad"
+    }
+  ],
   "Adelita" :[
     {
       "title": "Me Au",

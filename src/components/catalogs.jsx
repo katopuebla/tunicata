@@ -36,7 +36,7 @@ function Catalogs() {
   const showCatalogos = catalogs.map((catalog, i) => {
     return (
       <div className="col md-6" key={i}>
-        <Card style={{ width: "15rem" }}>
+        <Card>
           <Button
             variant="link"
             type="button"
@@ -68,8 +68,8 @@ function Catalogs() {
   });
 
   return (
-    <div className="row mt-4">
-      {showCatalogos}
+    <div>
+      <div className="row mt-4">{showCatalogos}</div>
       <Modal show={show} onHide={handleClose}>
         <Product _product={productDetail} />
       </Modal>
