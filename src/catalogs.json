@@ -30,27 +30,33 @@
       "type" : "Me Au",
       "description": "Playera manga 3/4 cuello redondo",
       "price": "10.00",
-      "size": [{
-        "CH": {
+      "sizes": [
+        {
+          "size": "CH",
           "width": "17'",
-          "heigth": "26"
+          "height": "26"
         },
-         "M": {
+        {
+          "size": "M",
           "width": "18.75'",
-          "heigth": "27"
+          "height": "27"
         },
-         "G": {
+        {
+          "size": "G",
           "width": "20.75'",
-          "heigth": "28"
+          "height": "28"
         },
-         "EG": {
+         {
+           "size": "EG",
           "width": "22.75'",
-          "heigth": "29"
+          "height": "29"
         },
-         "EEG": {
+         {
+          "size": "EEG",
           "width": "24.75'",
-          "heigth": "30"
+          "height": "30"
         },
+        ]
     }],
     {
        "title": "PLayera 2",
