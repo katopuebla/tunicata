@@ -5,7 +5,7 @@
       "name": "20210226_144035.jpg",
       "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FTunicata.jpg?alt=media&token=06ef0868-51b0-42b1-a7b9-1bf819e4b813",
       "description": "Inicio",
-      "price": "$ 10.00"
+      "price": "10.00"
     },
     {
        "title": "PLayera 2",
@@ -29,9 +29,29 @@
       "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FAdelitas%2F20210226_143048.jpg?alt=media&token=c093e59a-4855-4034-92f5-51e2330a2e4b",
       "type" : "Me Au",
       "description": "Playera manga 3/4 cuello redondo",
-      "size": "CH M G EG EEG",
-      "price": "$ 10.00"
-    },
+      "price": "10.00",
+      "size": [{
+        "CH": {
+          "width": "17'",
+          "heigth": "26"
+        },
+         "M": {
+          "width": "18.75'",
+          "heigth": "27"
+        },
+         "G": {
+          "width": "20.75'",
+          "heigth": "28"
+        },
+         "EG": {
+          "width": "22.75'",
+          "heigth": "29"
+        },
+         "EEG": {
+          "width": "24.75'",
+          "heigth": "30"
+        },
+    }],
     {
        "title": "PLayera 2",
       "name": "20210226_140624.jpg",

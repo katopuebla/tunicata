@@ -1,5 +1,6 @@
 import React from "react";
-import { Container, Card, Modal } from "react-bootstrap";
+import { Card, Modal, Row, Col } from "react-bootstrap";
+import NumberFormat from "react-number-format";
 
 function Product({ _product }) {
   console.log("_product", _product);
@@ -7,23 +8,36 @@ function Product({ _product }) {
 
   return (
     <div>
-      {/*<Modal.Header closeButton>
+      <Modal.Header closeButton>
         <Modal.Title>{productDetail.title}</Modal.Title>
-      </Modal.Header>*/}
+      </Modal.Header>
       <Modal.Body>
         <Card>
-          <Card.Img style={{ width: "18rem" }} src={productDetail.url} />
           <Card.Body>
-            <Card.Title>{productDetail.title}</Card.Title>
-            <Card.Text>
-              Diseño: {productDetail.type}
-              {productDetail.description}
-              {productDetail.price}
-              Talla 
-              {productDetail.size}
-
-              {/*<mark>{productDetail.price}</mark>*/}
-            </Card.Text>
+            <Row>
+              <Col xs={8}>
+                <Card.Img src={productDetail.url} />
+                {/*<Card.Title>{productDetail.title}</Card.Title>*/}
+                <Card.Text>
+                  Diseño: {productDetail.type}
+                  <blockquote>
+                    {productDetail.description}
+                    <br />
+                    <NumberFormat
+                      thousandSeparator={true}
+                      prefix={"$"}
+                      style="color : 'purple'"
+                    >
+                      {productDetail.price}
+                    </NumberFormat>
+                  </blockquote>
+                  Talla
+                  <blockquote>{productDetail.size}</blockquote>
+                  {/*<mark>{productDetail.price}</mark>*/}
+                </Card.Text>
+              </Col>
+              <Col />
+            </Row>
           </Card.Body>
           {/*<div className="card-footer">
               <button
