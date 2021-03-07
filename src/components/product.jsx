@@ -1,11 +1,9 @@
 import React from "react";
 import { Card, Modal, Row, Col, Table } from "react-bootstrap";
 import NumberFormat from "react-number-format";
-import { Measure } from "../catalogs.json";
 
 function Product({ _product }) {
   const productDetail = _product;
-  const meaures = Measure;
 
   const customStyle = {
     sizeStyle: {
@@ -14,12 +12,10 @@ function Product({ _product }) {
     },
     imgSize: {
       width: "100%",
-      height: "22vh",
+      height: "12vh",
       objectFit: "cover"
     }
   };
-
-  const measue = meaures.find(mesaure => mesaure.type === "Bones");
 
   const sizes = productDetail.sizes.map((item, index) => {
     return (
@@ -39,7 +35,7 @@ function Product({ _product }) {
         <Card>
           <Card.Body>
             <Row>
-              <Col xs={7}>
+              <Col xs={8}>
                 <Card.Img src={productDetail.url} />
                 {/*<Card.Title>{productDetail.title}</Card.Title>*/}
                 <Card.Text>
@@ -65,11 +61,10 @@ function Product({ _product }) {
                   {/*<mark>{productDetail.price}</mark>*/}
                 </Card.Text>
               </Col>
-              <Col xs={5}>
+              <Col xs={4}>
                 <Card.Img
                   src={productDetail.url}
-                  bsPrefix
-                  style={customStyle.imgSize}
+                 
                 />
                 <img
                   src={productDetail.imgSize.url}
