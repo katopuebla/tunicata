@@ -18,11 +18,12 @@ function Home() {
   const history = useHistory();
 
   const [carrusel, setCarrusel] = useState([{}]);
-  const [product, setProduct] = useState([{}]);
+  const [product, setProduct] = useState(Products);
   // ****** BEGINNING OF CHANGE ******
   useEffect(() => {
     setCarrusel(Carrusels);
-    setProduct(Products.collection);
+    console.log('Products',Products)
+    setProduct(Products);
   }, []);
   // ****** END OF CHANGE ******
   const showCarrusel = carrusel.map((catalog, index) => {
@@ -43,29 +44,26 @@ function Home() {
     );
   });
 
+  const handleCatalogClick = (_catalogName) => {
+    console.log('_catalogName',_catalogName)
+    history.push(`/catalogs/${_catalogName}/`);
+  }
+
+
   const showProduct = product.map((item, index) => {
-    console.log(item);
-    return (
-      <Col>
-        {/*<Card md-4 key={index}>
-          <Button variant="link" type="button" onClick={handleAdelitaClick}>
-            <Card.Img ariant="top" src={item.detail[0].url} />
-          </Button>
-          <Card.Body>
-            <Card.Title>Adelita</Card.Title>
-          </Card.Body>
-        </Card>*/}
-      </Col>
-    );
+      return (
+        <Col>
+          <Card md-4 key={index}>
+            <Button variant="link" type="button" onClick={() => handleCatalogClick(item.collection)}>
+              <Card.Img ariant="top" src={item.detail[0].url} /> 
+            </Button>
+            <Card.Body>
+              <Card.Title>{item.collection}</Card.Title>
+            </Card.Body>
+          </Card>
+        </Col>
+      );
   });
-
-  function handleAdelitaClick() {
-    history.push("/catalogs/Adelita/");
-  }
-
-  function handlePerLoverClick() {
-    history.push("/catalogs/Pet_Lovers/");
-  }
 
   return (
     <Container>

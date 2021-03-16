@@ -13,25 +13,14 @@ function Catalogs() {
   const [show, setShow] = useState(false);
   //functions
   const handleClose = () => setShow(false);
-  const handleShow = catalog => {
+  const handleShow = (catalog) => {
     setProductDetail(catalog);
     setShow(true);
   };
   // ****** BEGINNING OF CHANGE ******
   useEffect(() => {
-    {
-      /*switch (catalogId) {
-      case "Adelita":
-        setCatalogs(Adelita);
-        break;
-      case "Pet_Lovers":
-        setCatalogs(Pet_Lovers);
-        break;
-      default:
-        setCatalogs(Adelita);
-    }*/
-    }
-    setCatalogs(Products.collection[catalogId].detail);
+    let conllection = Products.find(prod => prod.collection == catalogId);
+    setCatalogs(conllection.detail);
   }, []);
   // ****** END OF CHANGE ******
 
@@ -50,11 +39,6 @@ function Catalogs() {
           </Button>
           <Card.Body>
             <Card.Title>{catalog.title}</Card.Title>
-            {/*<Card.Text>
-              {catalog.description}
-
-              <mark>{catalog.price}</mark>
-            </Card.Text>*/}
             <b>
               <NumberFormat
                 thousandSeparator={true}
@@ -66,14 +50,6 @@ function Catalogs() {
               />
             </b>
           </Card.Body>
-          {/*<div className="card-footer">
-              <button
-                className="btn btn-danger"
-                onClick={this.removeTodo.bind(this, i)}
-              >
-                Delete
-              </button>
-            </div>*/}
         </Card>
       </div>
     );
@@ -82,8 +58,8 @@ function Catalogs() {
   return (
     <div>
       <div className="row md-6">{showCatalogos}</div>
-      <Modal fluid show={show} onHide={handleClose}>
-        <Product _product={productDetail} />
+      <Modal show={show || false} onHide={handleClose}>
+        <Product _product={productDetail} _catalogId={catalogId} />
       </Modal>
     </div>
   );
