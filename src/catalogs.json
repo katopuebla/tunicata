@@ -1,43 +1,7 @@
 {
-  "Carrusels" :[
+  "Catalogs": [
     {
-      "title": "Inicio",
-      "name": "20210226_144035.jpg",
-      "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FTunicata.jpg?alt=media&token=06ef0868-51b0-42b1-a7b9-1bf819e4b813",
-      "description": "Inicio",
-      "price": "10.00"
-    },
-    {
-       "title": "PLayera 2",
-      "name": "20210226_144424.jpg",
-      "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FTunicata.jpg?alt=media&token=06ef0868-51b0-42b1-a7b9-1bf819e4b813",
-      "description": "Playera de temporada",
-      "price": "$ 20.00"
-    },
-    {
-       "title": "PLayera 3",
-      "name": "20210226_144901.jpg",
-      "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FTunicata.jpg?alt=media&token=06ef0868-51b0-42b1-a7b9-1bf819e4b813",
-      "description": "Playera con pino",
-      "price": "$ 25.00"
-    }
-  ],
-  "Measure": [
-    {
-      "id": 1,
-      "name": "Medinas Bones.jpg",
-      "type": "Bones",
-      "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FMedidas%20Bones.jpg?alt=media&token=bbce0a37-6a51-4792-a417-0899606667d3"
-    },
-    {
-      "id": 2,
-      "name": "Medinas josua.jpg",
-      "type": "Josua",
-      "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FMedidas%20josua.jpg?alt=media&token=e4f6730a-bcf1-4d62-b32c-d622ebd632ad"
-    }
-  ],
-  "Adelita" :[
-    {
+      "collection": "Adelita",
       "title": "Me Au",
       "name": "20210226_135837.jpg",
       "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FAdelitas%2F20210226_143048.jpg?alt=media&token=c093e59a-4855-4034-92f5-51e2330a2e4b",
@@ -66,12 +30,12 @@
           "width": "20.75'",
           "height": "28"
         },
-         {
-           "size": "EG",
+          {
+            "size": "EG",
           "width": "22.75'",
           "height": "29"
         },
-         {
+          {
           "size": "EEG",
           "width": "24.75'",
           "height": "30"
@@ -79,7 +43,8 @@
       ]
     },
     {
-       "title": "PLayera 2",
+      "collection": "Adelita",
+      "title": "PLayera 2",
       "name": "20210226_140624.jpg",
       "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FAdelitas%2F20210226_140624.jpg?alt=media&token=b5d982d6-61e3-49ce-b44d-176eb4555412",
       "description": "Playera con mimo",
@@ -106,12 +71,12 @@
           "width": "20.75'",
           "height": "28"
         },
-         {
-           "size": "EG",
+          {
+            "size": "EG",
           "width": "22.75'",
           "height": "29"
         },
-         {
+          {
           "size": "EEG",
           "width": "24.75'",
           "height": "30"
@@ -119,7 +84,8 @@
       ]
     },
     {
-       "title": "PLayera 3",
+      "collection": "Adelita",
+      "title": "PLayera 3",
       "name": "20210226_141137.jpg",
       "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FAdelitas%2F20210226_141137.jpg?alt=media&token=bccda30e-d3e1-45a5-8a39-26d1eb1c1429",
       "description": "Playera con pino",
@@ -146,12 +112,12 @@
           "width": "20.75'",
           "height": "28"
         },
-         {
-           "size": "EG",
+          {
+            "size": "EG",
           "width": "22.75'",
           "height": "29"
         },
-         {
+          {
           "size": "EEG",
           "width": "24.75'",
           "height": "30"
@@ -159,7 +125,8 @@
       ]
     },
     {
-       "title": "PLayera 4",
+      "collection": "Adelita",
+      "title": "PLayera 4",
       "name": "20210226_143048.jpg",
       "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/im/ages%2FCatalogs%2FAdelitas%2F20210226_143048.jpg?alt=media&token=c093e59a-4855-4034-92f5-51e2330a2e4b",
       "description": "Playera con lino",
@@ -186,21 +153,20 @@
           "width": "20.75'",
           "height": "28"
         },
-         {
-           "size": "EG",
+          {
+            "size": "EG",
           "width": "22.75'",
           "height": "29"
         },
-         {
+          {
           "size": "EEG",
           "width": "24.75'",
           "height": "30"
         }
       ]
-    }
-  ],
-  "Pet_Lovers" :[
+    },
     {
+      "collection": "Pet_Lovers",
       "title": "PLayera 1",
       "name": "20210226_144035.jpg",
       "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FPet_Lovers%2F20210226_144035.jpg?alt=media&token=f2e14f6d-2c9d-4d0c-8763-b9e50aa0b6d5",
@@ -228,12 +194,12 @@
           "width": "20.75'",
           "height": "28"
         },
-         {
-           "size": "EG",
+          {
+            "size": "EG",
           "width": "22.75'",
           "height": "29"
         },
-         {
+          {
           "size": "EEG",
           "width": "24.75'",
           "height": "30"
@@ -241,7 +207,8 @@
       ]
     },
     {
-       "title": "PLayera 2",
+      "collection": "Pet_Lovers",
+      "title": "PLayera 2",
       "name": "20210226_144424.jpg",
       "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FPet_Lovers%2F20210226_144424.jpg?alt=media&token=d9488268-b851-4027-aa1b-9825f7951cf8",
       "description": "Playera con mimo",
@@ -268,12 +235,12 @@
           "width": "20.75'",
           "height": "28"
         },
-         {
-           "size": "EG",
+          {
+            "size": "EG",
           "width": "22.75'",
           "height": "29"
         },
-         {
+          {
           "size": "EEG",
           "width": "24.75'",
           "height": "30"
@@ -281,6 +248,7 @@
       ]
     },
     {
+      "collection": "Pet_Lovers",
       "title": "PLayera 3",
       "name": "20210226_144901.jpg",
       "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FPet_Lovers%2F20210226_144901.jpg?alt=media&token=342df1ce-f512-4d73-9699-1518c6ae08ff",
@@ -308,21 +276,20 @@
           "width": "20.75'",
           "height": "28"
         },
-         {
-           "size": "EG",
+          {
+            "size": "EG",
           "width": "22.75'",
           "height": "29"
         },
-         {
+          {
           "size": "EEG",
           "width": "24.75'",
           "height": "30"
         }
       ]
-    }
-  ],
-  "Can&Michi" :[
+    },
     {
+      "colecction": "Can&Michi",
       "title": "PLayera 1",
       "name": "20210302_181158.jpg",
       "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FCan%26Michi%2F20210302_181158.jpg?alt=media&token=23d1bce7-e9c4-42ed-99b1-3946c7153cd2",
@@ -350,12 +317,12 @@
           "width": "20.75'",
           "height": "28"
         },
-         {
-           "size": "EG",
+          {
+            "size": "EG",
           "width": "22.75'",
           "height": "29"
         },
-         {
+          {
           "size": "EEG",
           "width": "24.75'",
           "height": "30"
@@ -363,7 +330,8 @@
       ]
     },
     {
-       "title": "PLayera 2",
+      "colecction": "Can&Michi",
+      "title": "PLayera 2",
       "name": "20210302_181427.jpg",
       "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FCan%26Michi%2F20210302_181427.jpg?alt=media&token=d84ff3a7-6bf3-4ce5-aeb5-4362bb8f003c",
       "description": "Playera ",
@@ -390,12 +358,12 @@
           "width": "20.75'",
           "height": "28"
         },
-         {
-           "size": "EG",
+          {
+            "size": "EG",
           "width": "22.75'",
           "height": "29"
         },
-         {
+          {
           "size": "EEG",
           "width": "24.75'",
           "height": "30"
@@ -403,11 +371,45 @@
       ]
     },
     {
-       "title": "Ronroneo sobre ruedas",
+      "colecction": "Can&Michi",
+      "title": "Ronroneo sobre ruedas",
       "name": "Ronroneo sobre ruedas.jpg",
       "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FCan%26Michi%2FRonroneo%20sobre%20ruedas.jpg?alt=media&token=8dce5f4e-9ebe-425c-8786-9593370dac14",
       "description": "Playera ",
-      "price": "$ 130.00"
+      "price": "$ 130.00",
+      "imgSize": {
+        "id": 1,
+        "name": "Medinas Bones.jpg",
+        "type": "Bones",
+        "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FCatalogs%2FMedidas%20Bones.jpg?alt=media&token=bbce0a37-6a51-4792-a417-0899606667d3"
+      },
+      "sizes": [
+        {
+          "size": "CH",
+          "width": "17'",
+          "height": "26"
+        },
+        {
+          "size": "M",
+          "width": "18.75'",
+          "height": "27"
+        },
+        {
+          "size": "G",
+          "width": "20.75'",
+          "height": "28"
+        },
+          {
+            "size": "EG",
+          "width": "22.75'",
+          "height": "29"
+        },
+          {
+          "size": "EEG",
+          "width": "24.75'",
+          "height": "30"
+        }
+      ]
     }
   ]
 }

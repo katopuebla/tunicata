@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Home from "./home";
 import Catalogs from "./catalogs";
+import ProductList from "./productList";
 import About from "./about";
 
 class Header extends Component {
@@ -48,6 +49,9 @@ class Header extends Component {
                 </NavDropdown>
               </Nav>
               <Nav>
+                <Nav.Link href="/productList/">productList</Nav.Link>
+              </Nav>
+              <Nav>
                 <Nav.Link href="/about/">About</Nav.Link>
               </Nav>
             </Navbar.Collapse>
@@ -56,6 +60,9 @@ class Header extends Component {
             <Route path="/" exact component={Home} />
             <Route path="/catalogs/:catalogId/">
               <Catalogs />
+            </Route>
+            <Route path="/productList/">
+              <ProductList />
             </Route>
             <Route path="/about/">
               <About />
