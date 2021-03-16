@@ -47,14 +47,14 @@ function Home() {
     console.log(item);
     return (
       <Col>
-        <Card md-4 key={index}>
+        {/*<Card md-4 key={index}>
           <Button variant="link" type="button" onClick={handleAdelitaClick}>
             <Card.Img ariant="top" src={item.detail[0].url} />
           </Button>
           <Card.Body>
             <Card.Title>Adelita</Card.Title>
           </Card.Body>
-        </Card>
+        </Card>*/}
       </Col>
     );
   });

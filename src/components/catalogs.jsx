@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Card, Button, Modal } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 import NumberFormat from "react-number-format";
-import { Adelita, Pet_Lovers } from "../catalogs.json";
+import { Products } from "../catalogs.json";
 import Product from "./product";
 
 function Catalogs() {
@@ -19,7 +19,8 @@ function Catalogs() {
   };
   // ****** BEGINNING OF CHANGE ******
   useEffect(() => {
-    switch (catalogId) {
+    {
+      /*switch (catalogId) {
       case "Adelita":
         setCatalogs(Adelita);
         break;
@@ -28,7 +29,9 @@ function Catalogs() {
         break;
       default:
         setCatalogs(Adelita);
+    }*/
     }
+    setCatalogs(Products.collection[catalogId].detail);
   }, []);
   // ****** END OF CHANGE ******
 
