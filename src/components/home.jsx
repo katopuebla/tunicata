@@ -18,11 +18,11 @@ function Home() {
   const history = useHistory();
 
   const [carrusel, setCarrusel] = useState([{}]);
-  const [products, setProducts] = useState([{}]);
+  const [product, setProduct] = useState([{}]);
   // ****** BEGINNING OF CHANGE ******
   useEffect(() => {
     setCarrusel(Carrusels);
-    setProducts(Products.collection);
+    setProduct(Product.collection);
   }, []);
   // ****** END OF CHANGE ******
   const showCarrusel = carrusel.map((catalog, index) => {
@@ -40,6 +40,22 @@ function Home() {
           <p>{catalog.description}</p>
         </Carousel.Caption>
       </Carousel.Item>
+    );
+  });
+
+  const products = product.map((item, index) => {
+    console.log(item);
+    return (
+      <Col>
+        <Card md-4 key={index}>
+          <Button variant="link" type="button" onClick={handleAdelitaClick}>
+            <Card.Img ariant="top" src={item.detail[0].url} />
+          </Button>
+          <Card.Body>
+            <Card.Title>Adelita</Card.Title>
+          </Card.Body>
+        </Card>
+      </Col>
     );
   });
 
