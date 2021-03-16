@@ -22,7 +22,7 @@ function Home() {
   // ****** BEGINNING OF CHANGE ******
   useEffect(() => {
     setCarrusel(Carrusels);
-    setProduct(Product.collection);
+    setProduct(Products.collection);
   }, []);
   // ****** END OF CHANGE ******
   const showCarrusel = carrusel.map((catalog, index) => {
@@ -43,7 +43,7 @@ function Home() {
     );
   });
 
-  const products = product.map((item, index) => {
+  const showProduct = product.map((item, index) => {
     console.log(item);
     return (
       <Col>
@@ -71,26 +71,7 @@ function Home() {
     <Container>
       <Carousel>{showCarrusel}</Carousel>
       <Row>
-        <Col>
-          <Card md-4 key={1}>
-            <Button variant="link" type="button" onClick={handleAdelitaClick}>
-              <Card.Img ariant="top" src={Adelita[0].url} />
-            </Button>
-            <Card.Body>
-              <Card.Title>Adelita</Card.Title>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col>
-          <Card md-4 key={2}>
-            <Button variant="link" type="button" onClick={handlePerLoverClick}>
-              <Card.Img ariant="top" src={Pet_Lovers[0].url} />
-            </Button>
-            <Card.Body>
-              <Card.Title>Can&Michi</Card.Title>
-            </Card.Body>
-          </Card>
-        </Col>
+        {showProduct}
       </Row>
     </Container>
   );
