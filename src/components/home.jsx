@@ -11,18 +11,21 @@ import {
   Button
 } from "react-bootstrap";
 //import { storage } from "../firebase";
-import { Carrusels, Adelita, Pet_Lovers } from "../catalogs.json";
+import { Products } from "../catalogs.json";
+import { Carrusels } from "../initial.json";
 
 function Home() {
   const history = useHistory();
 
   const [carrusel, setCarrusel] = useState([{}]);
+  const [products, setProducts] = useState([{}]);
   // ****** BEGINNING OF CHANGE ******
   useEffect(() => {
     setCarrusel(Carrusels);
+    setProducts(Products.collection);
   }, []);
   // ****** END OF CHANGE ******
-  const catalogos = carrusel.map((catalog, index) => {
+  const showCarrusel = carrusel.map((catalog, index) => {
     return (
       <Carousel.Item key={index}>
         <Image
@@ -50,16 +53,7 @@ function Home() {
 
   return (
     <Container>
-      <Carousel>{catalogos}</Carousel>
-      {/*<div>
-        <p>Esta página está diseñada para mostrar los catalogos</p>
-        <blockquote className="blockquote">
-          <p>
-            Esta página está diseñada para mostrar los catalogos de temparada y
-            distintos productos para su interes.
-          </p>
-        </blockquote>
-      </div>*/}
+      <Carousel>{showCarrusel}</Carousel>
       <Row>
         <Col>
           <Card md-4 key={1}>
