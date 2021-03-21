@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -7,20 +7,12 @@ import Header from "./components/header";
 import FloatingMessage from "./components/floatingMessage";
 import Footer from "./components/footer";
 
-class App extends Component {
-  constructor() {
-    super();
-  }
+const App = () => (
+  <div>
+    <Header />
+    <FloatingMessage />
+    <Footer />
+  </div>
+)
 
-  render() {
-    return (
-      <div>
-        <Header />
-        <FloatingMessage />
-        <Footer />
-      </div>
-    );
-  }
-}
-
-export default App;
+export default App

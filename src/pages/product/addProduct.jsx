@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card, Modal, Row, Col, Table } from "react-bootstrap";
 import NumberFormat from "react-number-format";
 
-function AddProduct({ _product }) {
+const AddProduct = ({ _product }) => {
   const productDetail = _product;
   const [urlImage, setUrlImage] = useState(productDetail.url);
 
