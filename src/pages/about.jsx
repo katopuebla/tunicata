@@ -1,7 +1,9 @@
 import React from "react";
 import { Container } from "react-bootstrap";
 
-const About = () => (
+const About = () => {
+  
+  return (
   <Container>
     <p>¿Quienes somos?</p>
     <blockquote class="blockquote">
@@ -12,6 +14,7 @@ const About = () => (
       <footer class="blockquote-footer">buscanos por watss.</footer>
     </blockquote>
   </Container>
-)
+  )
+}
 
 export default About;

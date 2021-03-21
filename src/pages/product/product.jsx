@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
-import { Modal, Button } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import { Products } from "../../catalogs.json";
+import { GeneralContext } from "../../contexts/generalContext";
 import { ProductContext } from "../../contexts/productContext";
 import ProductView from "./productView";
 
@@ -13,6 +14,7 @@ const Product = ({ _catalogId }) => {
     setShowAlert, setShowAlertError,
     showEdit, setShowEdit,
   } = useContext(ProductContext);
+  const { autenticado } = useContext(GeneralContext);
 
   const [currentProduct, setCurrentProduct] = useState(productDetail);
   setUrlImage(productDetail.url);
@@ -27,7 +29,7 @@ const Product = ({ _catalogId }) => {
   });
 
   const renderEdit = () => {
-    if (showEdit) return <Button className="justify-content-end" onClick={handleEdit}>Edit</Button>
+    if (autenticado && showEdit) return <Button className="justify-content-end" onClick={handleEdit}>Edit</Button>
     else return <span></span>
   }
 

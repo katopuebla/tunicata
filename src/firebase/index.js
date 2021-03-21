@@ -1,5 +1,7 @@
 import firebase from "firebase/app";
 import "firebase/storage";
+import 'firebase/auth';
+import * as firebaseui from 'firebaseui';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBzlSJcgA_IgVlPBInOz1fRtGeM8-Qv29U",
@@ -13,5 +15,8 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const storage = firebase.storage();
+const auth = firebase.auth();
+const autorization = firebase.auth;
+const firebaseUi = new firebaseui.auth.AuthUI(firebase.auth()); // UI login by firebase
 
-export { storage, firebase as default };
+export { storage, auth, firebaseUi, autorization, firebase as default };
