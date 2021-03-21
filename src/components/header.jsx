@@ -11,6 +11,7 @@ import ProductList from "../pages/product/productList";
 import { ProductProvider } from "../contexts/productContext";
 import Login from "../pages/Login";
 import { GeneralContext } from "../contexts/generalContext";
+import AddProduct from "../pages/product/addProduct";
 
 const Header = () => {
 
@@ -32,6 +33,7 @@ const Header = () => {
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/productList/" component={ProductList} />
+        <Route path="/addProduct/" component={AddProduct} />
         <Route path="/about" component={About} />
         <Route path="/login" component={Login} />
         <ProductProvider>

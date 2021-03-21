@@ -1,9 +1,10 @@
-import React, { useContext } from 'react';
-import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
+import React, { useContext, useState } from 'react';
+import { Nav, Navbar, NavDropdown, NavItem } from 'react-bootstrap';
 import { FaUserCog, FaUserSlash } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap'
 import { GeneralContext } from '../contexts/generalContext';
 import { auth } from '../firebase';
+import AddProduct from '../pages/product/addProduct';
 
 const imageMain = "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FTunicata.jpg?alt=media&token=06ef0868-51b0-42b1-a7b9-1bf819e4b813"
 // const logo = "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FTunicata_logo.png?alt=media&token=370fc1ea-7586-466e-b7b1-2345a9d69f26";
@@ -11,6 +12,12 @@ const imageMain = "https://firebasestorage.googleapis.com/v0/b/tunicata-web.apps
 const Menu = () => {
 
     const { autenticado, setAutenticado } = useContext(GeneralContext);
+    const [showAdd, setShowAdd] = useState(false);
+
+    const handleShowAdd = () => {
+        console.log('handleShowAdd', true)
+        setShowAdd(true);
+      }
 
     const signOut = () => {
         auth.signOut().then(success => setAutenticado(false));
@@ -64,6 +71,12 @@ const Menu = () => {
                     </Nav>
                     : <Nav></Nav>
                 }
+                {autenticado
+                    ? <Nav>
+                        <NavItem onClick={handleShowAdd}>addProduct</NavItem>
+                    </Nav>
+                    : <Nav></Nav>
+                }
                 <Nav>
                     <LinkContainer to="/about/">
                         <Nav.Link>About</Nav.Link>
@@ -83,6 +96,7 @@ const Menu = () => {
                 }
             </Navbar.Collapse>
         </Navbar>
+        <AddProduct showAdd={showAdd} setShowAdd={setShowAdd} />
     </React.Fragment>
 }
 

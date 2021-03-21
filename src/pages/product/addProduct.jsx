@@ -1,102 +1,110 @@
 import React, { useState } from "react";
-import { Card, Modal, Row, Col, Table } from "react-bootstrap";
+import { Modal, Row, Col, Form } from "react-bootstrap";
 import NumberFormat from "react-number-format";
+import { db, storage } from "../../firebase";
+import AddProductView from "./addProductView";
 
-const AddProduct = ({ _product }) => {
-  const productDetail = _product;
-  const [urlImage, setUrlImage] = useState(productDetail.url);
+const AddProduct = ({ showAdd, setShowAdd }) => {
 
-  const customStyle = {
-    sizeStyle: {
-      border: "5px solid #d9d9d9",
-      background: "#d9d9d9"
-    },
-    img: {
-      width: "90%",
-      height: "10vh",
-      objectFit: "cover"
-    },
+  const handleClose = () => setShowAdd(false)
+  const handleShow = () => setShowAdd(true);
+
+  const allInputs = { imgUrl: '' }
+  const [imageAsFile, setImageAsFile] = useState('')
+  const [imageAsUrl, setImageAsUrl] = useState(allInputs)
+
+  console.log('addProduct', showAdd);
+  const [collection, setCollection] = useState('');
+  const [form, setForm] = useState({
+    collection: '',
+    title: '',
+    name: '',
+    url: '',
+    type: '',
+    description: '',
+    price: 0,
     imgSize: {
-      width: "100%",
-      height: "10vh",
-      objectFit: "cover"
+      id: 0,
+      name: '',
+      type: '',
+      url: ''
     }
-  };
-
-  const sizes = productDetail.sizes.map((item, index) => {
-    return (
-      <span key={index}>
-        <span style={customStyle.sizeStyle}>{item.size}</span>
-        {"  "}
-      </span>
-    );
   });
 
-  function handleUrl(_url) {
-    setUrlImage(_url);
+  const [urlImage, setUrlImage] = useState('');
+
+  const handleFile = e => {
+    console.log('e', e)
+    // setUrlImage(e.target.files[0].name);
+    setForm({ ...form, ['name']: e.target.files[0].name });
   }
 
-  return (
-    <div>
-      <Modal.Header closeButton>
-        <Modal.Title>{productDetail.title}</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Card fluid>
-          <Card.Body fluid>
-            <Row>
-              <Col xs={8} md={8}>
-                <Card.Img src={urlImage} />
-                {/*<Card.Title>{productDetail.title}</Card.Title>*/}
-                <Card.Text>
-                  <b>Diseño:</b> {productDetail.type}
-                  <br />
-                  {productDetail.description}
-                  <br />
-                  <mark>
-                    <b>
-                      <NumberFormat
-                        thousandSeparator={true}
-                        prefix={"$ "}
-                        value={productDetail.price}
-                        displayType={"text"}
-                        suffix={" MXN"}
-                        style={{ color: "purple" }}
-                      />
-                    </b>
-                  </mark>
-                  <br />
-                  <b>Talla</b>
-                  <blockquote>{sizes}</blockquote>
-                  {/*<mark>{productDetail.price}</mark>*/}
-                </Card.Text>
-              </Col>
-              <Col xs={4} md={4}>
-                <Card.Img
-                  src={productDetail.url}
-                  style={customStyle.img}
-                  onClick={() => handleUrl(productDetail.url)}
-                />
-                <Card.Img
-                  src={productDetail.imgSize.url}
-                  style={customStyle.imgSize}
-                  onClick={() => handleUrl(productDetail.imgSize.url)}
-                />
-              </Col>
-            </Row>
-          </Card.Body>
-          {/*<div className="card-footer">
-              <button
-                className="btn btn-danger"
-                onClick={this.removeTodo.bind(this, i)}
-              >
-                Delete
-              </button>
-            </div>*/}
-        </Card>
-      </Modal.Body>
-    </div>
-  );
+  console.log(imageAsFile)
+  const handleImageAsFile = (e) => {
+    const image = e.target.files[0]
+    setImageAsFile(imageFile => (image))
+  }
+
+  const setItem = e => {
+    setForm({ ...form, [e.target.id]: e.target.value });
+  }
+
+  const handleSave = async e => {
+    e.preventDefault();
+    if (imageAsFile === '') {
+      console.error(`not an image, the image file is a ${typeof (imageAsFile)}`)
+      return
+    }
+    const imgUrl = await imageUpload(imageAsFile)
+    console.log('imgUrl', imgUrl);
+    setForm({ ...form, url: imgUrl })
+    console.log('saving', form);
+    db.child('Products').child(form.collection).push(form), error => {
+      console.log(error)
+    };
+    setShowAdd(false);
+  }
+
+  const imageUpload = async (image) => {
+    console.log('imageUpload', image);
+    const uploadTask = storage.ref(`/images/Catalogs/${form.collection}/${imageAsFile.name}`).put(imageAsFile)
+    //initiates the firebase side uploading 
+    return new Promise((resolve, reject) => {
+      console.log('Promise');
+      uploadTask.on('state_changed',
+        (snapShot) => {
+          //takes a snap shot of the process as it is happening
+           console.log(snapShot)
+        }, (err) => {
+          //catches the errors
+          reject(err)
+        }, () => {
+          // gets the functions from storage refences the image storage in firebase by the children
+          // gets the download url then sets the image from firebase as the value for the imgUrl key:
+          console.log('imageAsFile.name', imageAsFile.name);
+          storage.ref('images').child('Catalogs').child(form.collection).child(imageAsFile.name).getDownloadURL()
+            .then(fireBaseUrl => {
+              console.log('fireBaseUrl');
+              setImageAsUrl({ ...imageAsUrl, imgUrl: fireBaseUrl })
+              setForm({ ...form, url: fireBaseUrl })
+              console.log('imageAsUrl.imgUrl');
+              resolve(fireBaseUrl);
+            })
+            .catch(error => {
+              console.log('imageAsUrl error', error);
+            })
+            setForm({ ...form, name: imageAsFile.name })
+            console.log('termina download');
+        })
+    })
+  }
+
+
+  return <AddProductView showAdd={showAdd}
+    handleClose={handleClose}
+    handleSave={handleSave}
+    handleFile={handleImageAsFile}
+    setItem={setItem} />
 }
 
 export default AddProduct;
