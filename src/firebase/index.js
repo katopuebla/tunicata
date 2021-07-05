@@ -14,12 +14,12 @@ const firebaseConfig = {
   appId: '1:803433107094:web:076085692d4d0f141f7cb7'
 };
 
-firebase.initializeApp(firebaseConfig);
+var app = firebase.initializeApp(firebaseConfig);
 
-const db = firebase.database().ref(;
-const storage = firebase.storage();
-const auth = firebase.auth();
-const autorization = firebase.auth;
+const db = app.database();
+const storage = app.storage();
+const auth = app.auth();
+const autorization = app.auth;
 const firebaseUi = new firebaseui.auth.AuthUI(firebase.auth()); // UI login by firebase
 
 export { db, storage, auth, autorization, firebaseUi, firebase as default };
