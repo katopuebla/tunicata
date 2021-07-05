@@ -58,10 +58,15 @@ const AddProduct = ({ showAdd, setShowAdd }) => {
     const imgUrl = await imageUpload(imageAsFile)
     console.log('imgUrl', imgUrl);
     setForm({ ...form, url: imgUrl })
+    form.type = form.title;
+    form.name = imageAsFile.name;
     console.log('saving', form);
-    db.child('Products').child(form.collection).push(form), error => {
+    const collection = db.doc(`Products/${form.collection}/detail/${form.title}`);
+    collection.set(form).then( () => {
+      console.log("saved");
+    }).catch( error => {
       console.log(error)
-    };
+    });
     setShowAdd(false);
   }
 

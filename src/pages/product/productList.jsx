@@ -2,13 +2,14 @@ import React, { useState, useEffect } from "react";
 import { Card, Accordion, Button, ListGroup, Modal } from "react-bootstrap";
 
 import AddProduct from './addProduct';
-
-import { Products } from "../../catalogs.json";
+import { db } from "../../firebase";
+//import { Products } from "../../catalogs.json";
 
 const ProductList = () => {
-  const [product, setProduct] = useState(Products);
+  const [product, setProduct] = useState();
   const [productDetail, setProductDetail] = useState({});
   const [show, setShow] = useState(false);
+  const products = db.collection('Products');
 
   //functions
   const handleClose = () => setShow(false);
@@ -17,9 +18,11 @@ const ProductList = () => {
     setShow(true);
   };
   // ****** BEGINNING OF CHANGE ******
-  useEffect(() => {
-    setProduct[Products];
-  }, []);
+  /*useEffect(() => {
+    const products = db.collection('Products');
+    console.log(products)
+    setProduct[products];
+  }, []);*/
   // ****** END OF CHANGE ******
 
   const CollectionDetail = (props) => {
@@ -38,8 +41,11 @@ const ProductList = () => {
     </div>)
   }
 
-  const showProducts = product.map((item, index) => {
-    console.log("item", item, 'index', index);
+  const showProducts = products.snapshotChanges().map(actions => {
+    return actions.map(a => {
+      //const data = a.payload.doc.data() as Race;
+      data.id = a.payload.doc.id;
+    console.log("item", data);
     return (
       <Card key={index}>
         <Card.Header>
@@ -56,6 +62,7 @@ const ProductList = () => {
           </Accordion.Collapse>
         </Card>
     );
+    });
   });
 
   const handleUrl = (_url) => {

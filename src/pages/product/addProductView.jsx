@@ -14,7 +14,7 @@ const AddProductView = ({ showAdd, handleClose, handleSave, handleFile, setItem 
                             <Form.Label column sm="2"> Colección</Form.Label>
                             <Col sm="10"><Form.Control onChange={setItem} /></Col>
                         </Form.Group>
-                        <Form.Group as={Row} controlId='type'>
+                        <Form.Group as={Row} controlId='title'>
                             <Form.Label column sm="2"> Diseño</Form.Label>
                             <Col sm="10">
                                 <Form.Control onChange={setItem} />

@@ -1,4 +1,4 @@
-import firebase from "firebase/app";
+import firebase from "firebase";
 import "firebase/storage";
 import 'firebase/auth';
 import 'firebase/database';
@@ -16,7 +16,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-const db = firebase.database().ref();
+const db = firebase.firestore();
 const storage = firebase.storage();
 const auth = firebase.auth();
 const autorization = firebase.auth;
