@@ -22,4 +22,4 @@ const auth = firebase.auth();
 const autorization = firebase.auth;
 const firebaseUi = new firebaseui.auth.AuthUI(firebase.auth()); // UI login by firebase
 
-export { db, storage, auth, autorization, firebaseUifirebase as default };
+export { db, storage, auth, autorization, firebaseUi, firebase as default };
