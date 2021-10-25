@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Button } from "react-bootstrap";
-import { Products } from "../../catalogs.json";
+//import { Products } from "../../catalogs.json";
+import Products from "../../services/Products-service";
 import { GeneralContext } from "../../contexts/generalContext";
 import { ProductContext } from "../../contexts/productContext";
 import ProductView from "./productView";
@@ -14,22 +15,24 @@ const Product = ({ _catalogId }) => {
     setShowAlert, setShowAlertError,
     showEdit, setShowEdit,
   } = useContext(ProductContext);
+
   const { autenticado } = useContext(GeneralContext);
 
   const [currentProduct, setCurrentProduct] = useState(productDetail);
   setUrlImage(productDetail.url);
 
-  const sizes = productDetail.sizes.map((item, index) => {
+ /* const sizes = productDetail.sizes.map((item, index) => {
     return (
       <span >
         <span className="sizeStyle" key={index}>{item.size}</span>
         {"  "}
       </span>
     );
-  });
+  });*/
 
   const renderEdit = () => {
-    if (autenticado && showEdit) return <Button className="justify-content-end" onClick={handleEdit}>Edit</Button>
+    if (autenticado && showEdit) 
+      return <Button className="justify-content-end" onClick={handleEdit}>Edit</Button>
     else return <span></span>
   }
 
@@ -54,8 +57,8 @@ const Product = ({ _catalogId }) => {
        method: 'POST',
        body: data,
      });*/
-    let saveProduct = Products.find(prod => prod.collection == _catalogId);
-    saveProduct.detail.map((det) => {
+    let saveProduct = Products.getProductDetailById(_catalogId);
+    saveProduct.collectiones.map((det) => {
       if (det.title == productDetail.title) {
         det = productDetail;
       }
@@ -69,7 +72,7 @@ const Product = ({ _catalogId }) => {
 
   return (
     <ProductView
-      urlImage={urlImage} sizes={sizes}
+      urlImage={urlImage}
       onSubmit={handleSubmit} onSelectImageUrl={handleSelectImageUrl}
       renderEdit={renderEdit}
       onCloseEdit={handleCloseEdit}

@@ -1,33 +1,67 @@
-import React, { useEffect } from 'react';
-
-import { auth, firebaseUi, autorization } from '../firebase';
+import React, { useState , useEffect } from 'react';
+import { Container, Form, Button } from 'react-bootstrap';
+import { auth } from '../firebase';
+import { onAuthStateChanged, signInWithEmailAndPassword } from '@firebase/auth';
 
 const Login = () => {
 
+ const [isSignedIn, setIsSignedIn] = useState(false); // Local signed-in state.
+/*
     useEffect(() => {
-        auth.onAuthStateChanged(authUser => {
-            if (!authUser) {
-                firebaseUi.start("#firebase-auth-container", {
-                    signInSuccessUrl: '/',
-                    callbacks: {
-                        signInSuccessWithAuthResult: (AuthResult, redirectUrl) => {
-                            setAutenticado(true);
-                            console.log('is autenticado con', autorization.currentUser.email);
-                            setUser(autorization.currentUser.email);
-                            return false;
-                        }
-                    },
-                    signInOptions: [
-                        {
-                            provider: autorization.EmailAuthProvider.PROVIDER_ID
-                        }
-                    ],
-                });
-            }
-        })
+        const unregisterAuthObserver = auth.onAuthStateChanged(authUser => {
+			setIsSignedIn(!!authUser);
+        });
+		return () => unregisterAuthObserver(); 
     }, []);
+*/
+	onAuthStateChanged(auth, authUser => {
+		if ( authUser)
+		setIsSignedIn(!!authUser);
+	});
 
-    return <div id="firebase-auth-container"></div>
+	const submitHandle = (e) => {
+		e.preventDefault();
+		const email = e.target.formBasicEmail.value;
+		const passw = e.target.formBasicPassword.value;
+		signInWithEmailAndPassword(auth, email, passw);
+
+	}
+
+	if (!isSignedIn) {
+		return (
+		  <Container>
+			  <Form onSubmit={submitHandle}>
+				<Form.Group className="mb-3" controlId="formBasicEmail">
+					<Form.Label>Email address</Form.Label>
+					<Form.Control type="email" placeholder="Enter email" />
+					<Form.Text className="text-muted">
+					We'll never share your email with anyone else.
+					</Form.Text>
+				</Form.Group>
+
+				<Form.Group className="mb-3" controlId="formBasicPassword">
+					<Form.Label>Password</Form.Label>
+					<Form.Control type="password" placeholder="Password" />
+				</Form.Group>
+				<Form.Group className="mb-3" controlId="formBasicCheckbox">
+					<Form.Check type="checkbox" label="Check me out" />
+				</Form.Group>
+				<Button variant="primary" type="submit">
+					Aceptar
+				</Button>
+				</Form>
+			</Container>
+		);
+	  }
+	  return (
+		<div>
+			<center>
+		  <h1>Bienvenido</h1>
+		  <p>{auth.currentUser.displayName}!estas detro de la apliucacion!</p>
+		  <a onClick={() => auth.signOut()}>Sign-out</a>
+		  </center>
+		</div>
+	  );
 }
 
 export default Login;

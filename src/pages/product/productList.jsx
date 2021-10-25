@@ -1,15 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Card, Accordion, Button, ListGroup, Modal } from "react-bootstrap";
 
-import AddProduct from './addProduct';
-import { db } from "../../firebase";
+import { ProductContext } from "../../contexts/productContext";
+import Product from '../product/product';
+import Products from "../../services/Products-service";
 //import { Products } from "../../catalogs.json";
 
 const ProductList = () => {
-  const [product, setProduct] = useState();
-  const [productDetail, setProductDetail] = useState({});
+  const { productDetail, setProductDetail } = useContext( ProductContext );
+  const [products, setProducts] = useState([]);
   const [show, setShow] = useState(false);
-  const products = db.collection('Products');
 
   //functions
   const handleClose = () => setShow(false);
@@ -17,67 +17,61 @@ const ProductList = () => {
     setProductDetail(catalog);
     setShow(true);
   };
-  // ****** BEGINNING OF CHANGE ******
-  /*useEffect(() => {
-    const products = db.collection('Products');
-    console.log(products)
-    setProduct[products];
-  }, []);*/
-  // ****** END OF CHANGE ******
 
-  const CollectionDetail = (props) => {
-    const list = props.list;
-    const showList = list.detail.map( (item, idx) => {
-      return <ListGroup.Item action key={idx}
-              onClick={() => {
-                handleShow(item);
-              }} >
-        {item.title}
-      </ListGroup.Item>;
-    })
-    
-    return ( <div>
-      {showList}
-    </div>)
-  }
-
-  const showProducts = products.snapshotChanges().map(actions => {
-    return actions.map(a => {
-      //const data = a.payload.doc.data() as Race;
-      data.id = a.payload.doc.id;
-    console.log("item", data);
-    return (
-      <Card key={index}>
-        <Card.Header>
-          <Accordion.Toggle as={Button} variant="link" eventKey={index}>
-            {item.collection}
-          </Accordion.Toggle>
-          </Card.Header>
-          <Accordion.Collapse eventKey={index}>
-            <Card.Body>
-              <ListGroup>
-                <CollectionDetail list={item}/>
-              </ListGroup>
-            </Card.Body>
-          </Accordion.Collapse>
-        </Card>
-    );
+  async function fetchProducts() {
+    const listData = [];
+    const infoData = await Products.getAll();
+    // filter only one field in Collections
+    infoData.forEach( data => {
+      const collections = data.detail;
+      if ( collections )
+        listData.push(collections);
     });
-  });
+    setProducts(listData); 
+   }
+
+  useEffect( async () => {
+     fetchProducts();
+   }, []);
 
   const handleUrl = (_url) => {
     setUrlImage(_url);
   }
 
+ const showProducts = products && products.map((item, index) => {
+   const id = item[0].collection;
+    return (
+      <div>
+        <Accordion.Item eventKey={"" + index}>
+            <Accordion.Header>{id}</Accordion.Header>
+            <Accordion.Body>
+              <ListGroup>
+                {
+                  item.map((detail, idx) => {
+                    return (
+                      <ListGroup.Item action key={idx}
+                        onClick={() => { handleShow(detail); }} >
+                        {detail.title}
+                      </ListGroup.Item>
+                    )
+                  })
+                }
+              </ListGroup>
+            </Accordion.Body>
+        </Accordion.Item>
+      </div>
+    )
+  });
+
   return (
-    <div>
+    <>
       <Accordion defaultActiveKey="0">
         {showProducts}
       </Accordion>
       <Modal fluid show={show} onHide={handleClose}>
-        <AddProduct _product={productDetail} />
-  </Modal>
-    </div>
+        <Product _catalogId={productDetail.collection} />
+      </Modal>
+    </>
   );
 }
 

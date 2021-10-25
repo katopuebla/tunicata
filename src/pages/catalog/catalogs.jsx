@@ -1,15 +1,17 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 
-import { Products } from "../../catalogs.json";
+//import { Products } from "../../catalogs.json";
+import Products from "../../services/Products-service";
 import CatalogView from "./CatalogView";
 import CardCatalog from "../../components/CardCatalog";
 import { ProductContext } from "../../contexts/productContext";
 
 const Catalogs = () => {
-  const [catalogs, setCatalogs] = useState([{}]);
+  const [catalogs, setCatalogs] = useState([]);
   let { catalogId } = useParams();
   const { productDetail, setProductDetail } = useContext( ProductContext );
+  //const [catalogId, setCatalogId] = useState(useParams());
   const [show, setShow] = useState(false);
   //functions
   const handleClose = () => setShow(false);
@@ -18,12 +20,24 @@ const Catalogs = () => {
     setShow(true);
   };
 
-  useEffect(() => {
-    let conllection = Products.find(prod => prod.collection == catalogId);
-    setCatalogs(conllection.detail);
+  async function fetchProducts() {
+    const listData = [];
+    const infoData = await Products.getProductDetailById(catalogId);
+    // filter only one field in Collections
+    infoData && infoData.detail.forEach( data => {
+      const collections = data;
+      if ( collections )
+        listData.push(collections);
+    });
+    setCatalogs(listData); 
+   }
+
+  useEffect( async () => {
+    fetchProducts();
+    //setCatalogs(conllection.detail);
   }, []);
 
-  const showCatalogos = catalogs.map((catalog, i) =>
+  const showCatalogos = catalogs && catalogs.map((catalog, i) =>
     <CardCatalog catalog={catalog} onShowCatalog={handleShowCatalog} key={i} />
   );
 

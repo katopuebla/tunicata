@@ -5,7 +5,7 @@ import FooterProduct from '../../components/FooterProduct';
 import { ProductContext } from '../../contexts/productContext';
 import ProductDetail from './productDetail';
 
-const ProductView = ({ onSubmit, sizes, onSelectImageUrl, renderEdit, onCloseEdit }) => {
+const ProductView = ({ onSubmit, onSelectImageUrl, renderEdit, onCloseEdit }) => {
     const { productDetail, urlImage } = useContext(ProductContext);
     return (
         <React.Fragment>
@@ -27,7 +27,7 @@ const ProductView = ({ onSubmit, sizes, onSelectImageUrl, renderEdit, onCloseEdi
                                         <ProductDetail />
                                         <br />
                                         <b>Talla</b>
-                                        <blockquote>{sizes}</blockquote>
+                                        {/*<blockquote>{sizes}</blockquote>*/}
                                     </Card.Text>
                                 </Col>
                                 <Col xs={4} md={4}>

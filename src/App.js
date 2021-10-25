@@ -1,7 +1,6 @@
 import React from "react";
 import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import 'firebaseui/dist/firebaseui.css'
 
 //Components
 import Header from "./components/header";

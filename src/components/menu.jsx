@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { Switch, Route, Link } from "react-router-dom";
 import { Nav, Navbar, NavDropdown, NavItem } from 'react-bootstrap';
 import { FaUserCog, FaUserSlash } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap'
@@ -65,7 +66,7 @@ const Menu = () => {
                 </Nav>
                 {autenticado
                     ? <Nav>
-                        <LinkContainer to="/productList/">
+                        <LinkContainer to="/list">
                             <Nav.Link>productList</Nav.Link>
                         </LinkContainer>
                     </Nav>
@@ -74,6 +75,9 @@ const Menu = () => {
                 {autenticado
                     ? <Nav>
                         <NavItem onClick={handleShowAdd}>addProduct</NavItem>
+                        {/*<LinkContainer to="/add">
+                            <Nav.Link>addProduct</Nav.Link>
+                        </LinkContainer>*/}
                     </Nav>
                     : <Nav></Nav>
                 }

@@ -32,12 +32,12 @@ const Header = () => {
       <Menu />
       <Switch>
         <Route path="/" exact component={Home} />
-        <Route path="/productList/" component={ProductList} />
-        <Route path="/addProduct/" component={AddProduct} />
         <Route path="/about" component={About} />
         <Route path="/login" component={Login} />
         <ProductProvider>
           <Route path="/catalogs/:catalogId/" component={Catalogs} />
+          <Route path="/list" component={ProductList} />
+          <Route path="/add" component={AddProduct} />
         </ProductProvider>
       </Switch>
     </Router>

@@ -1,21 +1,11 @@
-import React, { useState } from "react";
-import { Modal, Row, Col, Form } from "react-bootstrap";
-import NumberFormat from "react-number-format";
-import { db, storage } from "../../firebase";
+import React, { useState, useEffect } from "react";
 import AddProductView from "./addProductView";
+import productService from "../../services/Products-service";
+import catalogService from "../../services/Catalogs-service";
+import fileService from "../../services/File-service";
+import { Alert } from 'react-bootstrap';
 
-const AddProduct = ({ showAdd, setShowAdd }) => {
-
-  const handleClose = () => setShowAdd(false)
-  const handleShow = () => setShowAdd(true);
-
-  const allInputs = { imgUrl: '' }
-  const [imageAsFile, setImageAsFile] = useState('')
-  const [imageAsUrl, setImageAsUrl] = useState(allInputs)
-
-  console.log('addProduct', showAdd);
-  const [collection, setCollection] = useState('');
-  const [form, setForm] = useState({
+  const FORM = {
     collection: '',
     title: '',
     name: '',
@@ -29,87 +19,120 @@ const AddProduct = ({ showAdd, setShowAdd }) => {
       type: '',
       url: ''
     }
-  });
+}
+
+const AddProduct = ({ showAdd, setShowAdd }) => {
+
+  const [showAlert, setShowAlert] = useState(false);
+  const [showAlertError, setShowAlertError] = useState(false);
+  const [showMessage, setShowMessage] = useState('');
+
+  const [validated, setValidated] = useState(false);
+
+  const handleClose = () => setShowAdd(false);
+  const handleShow = () => setShowAdd(true);
+
+  //const allInputs = { imgUrl: '' }
+  const [imageAsFile, setImageAsFile] = useState('')
+  //const [imageAsUrl, setImageAsUrl] = useState(allInputs)
+
+  const [collection, setCollection] = useState([]);
+  const [form, setForm] = useState(FORM);
+
 
   const [urlImage, setUrlImage] = useState('');
 
-  const handleFile = e => {
-    console.log('e', e)
-    // setUrlImage(e.target.files[0].name);
-    setForm({ ...form, ['name']: e.target.files[0].name });
+  async function getCollection() {
+    const list = await catalogService.getDataById("Collection");
+    setCollection(list.detail);
   }
 
+  useEffect( async () => {
+    getCollection();
+   }, []);
+
   console.log(imageAsFile)
-  const handleImageAsFile = (e) => {
+    const handleImageAsFile = (e) => {
     const image = e.target.files[0]
     setImageAsFile(imageFile => (image))
   }
 
   const setItem = e => {
     setForm({ ...form, [e.target.id]: e.target.value });
+    setShowAlertError(false);
   }
 
   const handleSave = async e => {
     e.preventDefault();
-    if (imageAsFile === '') {
-      console.error(`not an image, the image file is a ${typeof (imageAsFile)}`)
-      return
+    const currentForm = e.currentTarget;
+    if (currentForm.checkValidity() === false) {
+      e.stopPropagation();
+      setValidated(true);
+      return;
     }
-    const imgUrl = await imageUpload(imageAsFile)
-    console.log('imgUrl', imgUrl);
-    setForm({ ...form, url: imgUrl })
-    form.type = form.title;
-    form.name = imageAsFile.name;
-    console.log('saving', form);
-    const collection = db.doc(`Products/${form.collection}/detail/${form.title}`);
-    collection.set(form).then( () => {
-      console.log("saved");
-    }).catch( error => {
-      console.log(error)
-    });
+
+    setValidated(true);
+
+    const isExist = await productService.isExitProductDetail(form.collection, form.title);
+    if(isExist) {
+      console.log("Ya existe !!!");
+      setShowMessage("Ya existe !!!");
+      setShowAlertError(true);
+      return;
+    }
+
+    const imgUrl = await fileService.imageUpload(form.collection, imageAsFile);
+    //setImageAsUrl({ ...imageAsUrl, imgUrl: imgUrl });
+    //console.log('form', form);
+    const newForm = form;
+    newForm.type = form.title;
+    newForm.url = imgUrl;
+    newForm.name = imageAsFile.name;
+    newForm.type = form.title;
+    //console.log('saving', newForm);
+    var detail = [];
+    const data = await productService.getProductDetailById(form.collection);
+    if (data){
+      detail = (data.detail ? data.detail : []);
+    }
+    if(detail)
+      detail.push(form);
+
+    await productService.create(form.collection, { detail : detail});
     setShowAdd(false);
   }
 
-  const imageUpload = async (image) => {
-    console.log('imageUpload', image);
-    const uploadTask = storage.ref(`/images/Catalogs/${form.collection}/${imageAsFile.name}`).put(imageAsFile)
-    //initiates the firebase side uploading 
-    return new Promise((resolve, reject) => {
-      console.log('Promise');
-      uploadTask.on('state_changed',
-        (snapShot) => {
-          //takes a snap shot of the process as it is happening
-           console.log(snapShot)
-        }, (err) => {
-          //catches the errors
-          reject(err)
-        }, () => {
-          // gets the functions from storage refences the image storage in firebase by the children
-          // gets the download url then sets the image from firebase as the value for the imgUrl key:
-          console.log('imageAsFile.name', imageAsFile.name);
-          storage.ref('images').child('Catalogs').child(form.collection).child(imageAsFile.name).getDownloadURL()
-            .then(fireBaseUrl => {
-              console.log('fireBaseUrl');
-              setImageAsUrl({ ...imageAsUrl, imgUrl: fireBaseUrl })
-              setForm({ ...form, url: fireBaseUrl })
-              console.log('imageAsUrl.imgUrl');
-              resolve(fireBaseUrl);
-            })
-            .catch(error => {
-              console.log('imageAsUrl error', error);
-            })
-            setForm({ ...form, name: imageAsFile.name })
-            console.log('termina download');
-        })
-    })
-  }
+  const showOptionCollection = collection && collection.map(v => {
+    return (<option value={v.name}>{v.name}</option>);
+  });
 
+  const AlertAddProduct = () => {
+    return (
+      <React.Fragment>
+          <Alert show={showAlert || false} variant='success' onClose={() => {
+              setShowAlert(false);
+          }} dismissible>
+            {showMessage} | Se guardó existosamente!!
+      </Alert>
+          <Alert show={showAlertError || false} variant='danger' onClose={() => {
+              setShowAlertError(false);
+          }} dismissible>
+             {showMessage} | Error en el guardado!!
+      </Alert>
+      </React.Fragment>
+  );
+  }
 
   return <AddProductView showAdd={showAdd}
     handleClose={handleClose}
     handleSave={handleSave}
     handleFile={handleImageAsFile}
-    setItem={setItem} />
+    setItem={setItem} 
+    setSelect={collection}
+    showOption={showOptionCollection}
+    AlertAddProduct={AlertAddProduct}
+    validated={validated}
+    />
 }
 
 export default AddProduct;
