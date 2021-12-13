@@ -14,21 +14,23 @@ const ProductDetail = () => {
     if (isEdit) {
         return (
             <React.Fragment>
-                Diseño: <input type="text" id="type" defaultValue={productDetail.type} onChange={setItem('type')} />
+                <b>Diseño:</b>
+                <input type="text" id="type" defaultValue={productDetail.type} onChange={setItem('type')} />
                 <br />
-                <input type="text" id="description" defaultValue={productDetail.description} onChange={setItem('description')} />
+                <b>Descripción:</b>
+                <textarea id="description" defaultValue={productDetail.description} onChange={setItem('description')} />
                 <br />
                 <mark>
-                    <b><input type="text" id="price" defaultValue={productDetail.price} onChange={setItem('price')} /></b>
+                    <b><input type="number" id="price" defaultValue={productDetail.price} onChange={setItem('price')} /></b>
                 </mark>
             </React.Fragment>
         );
     } else {
         return (
             <React.Fragment>
-                Diseño: {productDetail.type}
+                <b>Diseño:</b> {productDetail.type}
                 <br />
-                {productDetail.description}
+                <b>Descripción:</b> {productDetail.description}
                 <br />
                 <mark>
                     <b>

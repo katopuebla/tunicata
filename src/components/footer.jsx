@@ -1,9 +1,10 @@
 import React from "react";
 import { FaEnvelope, FaWhatsapp, FaPhone } from "react-icons/fa";
+import { Row, Col } from 'react-bootstrap';
 
 const Footer = () => (
   <React.Fragment>
-    <div className="footer text-center text-lg-start bg-green">
+    <div className="text-center text-lg-start bg-green ">
       <div className="text-center ">
         Entregas de 1 a 2 días bajo pedido,
           {" llámanos al  "}

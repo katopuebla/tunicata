@@ -25,27 +25,27 @@ const Menu = () => {
     }
 
     return <React.Fragment>
-        <Navbar bg="light" variant="dark" expand="md">
+        <Navbar className="bg-green" variant="dark" expand="sm">
             <LinkContainer to="/">
                 <Navbar.Brand>
                     <img
                         alt="Tunicata"
                         src={imageMain}
-                        width="120"
-                        className="d-inline-block align-top"
+                        width="12%"
+                        className="align-top"
                     />{" "}
                 </Navbar.Brand>
             </LinkContainer>
-            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            {/*<Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav>
                     <LinkContainer to="/login/">
                         <Nav.Link>Login</Nav.Link>
                     </LinkContainer>
                 </Nav>
-            </Navbar.Collapse>
+</Navbar.Collapse>*/}
         </Navbar>
-        <Navbar className="bg-green" variant="light" expand="md">
+        <Navbar className="bg-green" variant="light" expand="sm">
             <LinkContainer to="/">
                 <Navbar.Brand />
             </LinkContainer>

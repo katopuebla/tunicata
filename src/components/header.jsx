@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Menu from "./menu";
 import Home from "../pages/home";
 import Catalogs from "../pages/catalog/catalogs";
+import Product from "../pages/product/product"
 import About from "../pages/about";
 import ProductList from "../pages/product/productList";
 import { ProductProvider } from "../contexts/productContext";
@@ -28,6 +29,7 @@ const Header = () => {
   }, []);
 
   return (
+    <>
     <Router>
       <Menu />
       <Switch>
@@ -36,11 +38,13 @@ const Header = () => {
         <Route path="/login" component={Login} />
         <ProductProvider>
           <Route path="/catalogs/:catalogId/" component={Catalogs} />
+          <Route path="/product/:catalogId/:productId" component={Product} />
           <Route path="/list" component={ProductList} />
           <Route path="/add" component={AddProduct} />
         </ProductProvider>
       </Switch>
     </Router>
+    </>
   );
 }
 

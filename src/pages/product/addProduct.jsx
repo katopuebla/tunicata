@@ -91,14 +91,14 @@ const AddProduct = ({ showAdd, setShowAdd }) => {
     newForm.type = form.title;
     //console.log('saving', newForm);
     var detail = [];
-    const data = await productService.getProductDetailById(form.collection);
+    const data = await productService.getProductById(form.collection);
     if (data){
       detail = (data.detail ? data.detail : []);
     }
     if(detail)
       detail.push(form);
 
-    await productService.create(form.collection, { detail : detail});
+    await productService.save(form.collection, { detail : detail});
     setShowAdd(false);
   }
 

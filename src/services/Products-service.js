@@ -14,20 +14,31 @@ import { collection, doc, setDoc, getDoc, getDocs, updateDoc } from 'firebase/fi
         return infoData;
     };
 
-    const getProductDetailById = async (key) => {
+    const getProductById = async (key) => {
         const docRef = doc(db, COLLECTION, key);
         const infoData = await getDoc(docRef);
         return infoData.data();
     };
 
+    const findProductDetail = async (key, title) => {
+       const docRef = doc(db, COLLECTION, key);
+        const infoData = await getDoc(docRef);
+        const data = infoData.data();
+        let detail = {};
+        data.detail.forEach(det => {
+            if (det.title == title) {
+                detail = det;
+              }
+        })
+        return detail;
+    };
+
     const isExitProductDetail = async (key, title) => {
         var exist = false;
-        const infoData =  await getProductDetailById(key);
-        infoData && infoData.detail.forEach(element => {
-            if (element.title == title) {
+        const detail =  await findProductDetail(key, title);
+        if ( detail && detail.title == title) {
                 exist = true;
-            }
-        });
+        }
         return exist;
     }
 /*
@@ -44,31 +55,32 @@ import { collection, doc, setDoc, getDoc, getDocs, updateDoc } from 'firebase/fi
         return null;
     };
 */
-    const create = async (key, data) => {
+    const save = async (key, data) => {
         //return itemsRef.add(data);
         return await setDoc(doc(db, COLLECTION, key), data);
     };
 
-    const update = (key, data) => {
-        return itemsRef.doc(key).update(data);
+   /*const update = async (key, data) => {
+        return await itemsRef.doc(key).update(data);
+    };*/
+
+    const remove = async (key) => {
+        return await itemsRef.doc(key).remove();
     };
 
-    const remove = (key) => {
-        return itemsRef.doc(key).remove();
-    };
-
-    const removeAll = () => {
-        return itemsRef.remove();
+    const removeAll = async () => {
+        return await itemsRef.remove();
     };
 
 //export default ProductService;
 export default {
   getAll,
-  getProductDetailById,
+  getProductById,
+  findProductDetail,
   isExitProductDetail,
  // getProduct,
-  create,
-  update,
+  save,
+//  update,
   remove,
   removeAll,
 };

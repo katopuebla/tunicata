@@ -1,52 +1,71 @@
 import React, { useContext } from 'react';
-import { Card, Col, Modal, Row } from 'react-bootstrap';
+import { Card, Col, Row, Carousel } from 'react-bootstrap';
 import AlertProduct from '../../components/AlertProduct';
 import FooterProduct from '../../components/FooterProduct';
 import { ProductContext } from '../../contexts/productContext';
 import ProductDetail from './productDetail';
 
-const ProductView = ({ onSubmit, onSelectImageUrl, renderEdit, onCloseEdit }) => {
+const ProductView = ({ onSubmit, onSelectImageUrl, renderEdit, onCloseEdit, isMobile }) => {
     const { productDetail, urlImage } = useContext(ProductContext);
     return (
         <React.Fragment>
             <form onSubmit={onSubmit}>
-                <Modal.Header closeButton>
-                    <Modal.Title>{productDetail.title}</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                    <AlertProduct />
-                    <div className="d-flex justify-content-end">
-                        {renderEdit()}
-                    </div>
-                    <Card fluid>
-                        <Card.Body fluid>
-                            <Row className="justify-content-md-center">
-                                <Col xs={4} md={8}>
-                                    <Card.Img src={urlImage} />
-                                    <Card.Text>
-                                        <ProductDetail />
-                                        <br />
-                                        <b>Talla</b>
-                                        {/*<blockquote>{sizes}</blockquote>*/}
-                                    </Card.Text>
-                                </Col>
-                                <Col xs={4} md={4}>
-                                    <Card.Img
-                                        src={productDetail.url}
-                                        className="img"
-                                        onClick={() => onSelectImageUrl(productDetail.url)}
-                                    />
-                                    <Card.Img
-                                        src={productDetail.imgSize.url}
-                                        className="imgSize"
-                                        onClick={() => onSelectImageUrl(productDetail.imgSize.url)}
-                                    />
-                                </Col>
-                            </Row>
-                        </Card.Body>
+                <Card fluid>
+                    <Card.Title>{productDetail.title}</Card.Title>
+                    <Card.Body>
+                        <AlertProduct />
+                        <Row className="justify-content-md-center">
+                            <Col md={6}>
+                                {isMobile ? (
+                                    <Row>
+                                        <Col sm={8}>
+                                            <Carousel>
+                                                <Carousel.Item>
+                                                    <Card.Img src={urlImage} width="30%" height="auto" />
+                                                </Carousel.Item>
+                                                <Carousel.Item>
+                                                    <Card.Img src={urlImage} width="30%" height="auto" />
+                                                </Carousel.Item>
+                                            </Carousel>
+                                        </Col>
+                                    </Row>
+                                ) : (
+                                    <Row>
+                                        <Col md={2}>
+                                            <Card.Img width="1%" height="auto"
+                                                src={productDetail.url}
+                                                className="img"
+                                                onClick={() => onSelectImageUrl(productDetail.url)}
+                                            />
+                                            <Card.Img width="1%" height="auto"
+                                                src={productDetail.url}
+                                                className="img"
+                                                onClick={() => onSelectImageUrl(productDetail.url)}
+                                            />
+                                        </Col>
+                                        <Col xs md={8}>
+                                            <Card.Img src={urlImage} width="20%" height="auto" />
+                                        </Col>
+                                    </Row>
+                                )}
+
+                            </Col>
+                            <Col md={6}>
+                                <Card.Text>
+                                    <ProductDetail />
+                                    <br />
+                                    <b>Talla</b>
+                                    {/*<blockquote>{sizes}</blockquote>*/}
+                                </Card.Text>
+                                <div className="d-flex justify-content-end">
+                            {renderEdit()}
+                        </div>
                         <FooterProduct onCloseEdit={onCloseEdit} />
-                    </Card>
-                </Modal.Body>
+                            </Col>
+                        </Row>
+                       
+                    </Card.Body>
+                </Card>
             </form>
         </React.Fragment>
     );

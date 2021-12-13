@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Button } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 //import { Products } from "../../catalogs.json";
 import Products from "../../services/Products-service";
 import { GeneralContext } from "../../contexts/generalContext";
@@ -16,11 +17,28 @@ const Product = ({ _catalogId }) => {
     showEdit, setShowEdit,
   } = useContext(ProductContext);
 
-  const { autenticado } = useContext(GeneralContext);
+ /* const [isMobile, setIsMobile] = useState(false);
+
+  //choose the screen size 
+  const handleResize = () => {
+    if (window.innerWidth < 720) {
+        setIsMobile(true)
+    } else {
+        setIsMobile(false)
+    }
+  }*/
+
+  const { autenticado, isMobile } = useContext(GeneralContext);
+  let { catalogId } = useParams();
+  let { productId } = useParams();
 
   const [currentProduct, setCurrentProduct] = useState(productDetail);
   setUrlImage(productDetail.url);
 
+  // create an event listener
+/*  useEffect(() => {
+    window.addEventListener("resize", handleResize)
+  })*/
  /* const sizes = productDetail.sizes.map((item, index) => {
     return (
       <span >
@@ -51,19 +69,26 @@ const Product = ({ _catalogId }) => {
     setProductDetail(currentProduct);
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     /*fetch('/api/form-submit-url', {
        method: 'POST',
        body: data,
      });*/
-    let saveProduct = Products.getProductDetailById(_catalogId);
-    saveProduct.collectiones.map((det) => {
+     if( _catalogId)
+      catalogId = _catalogId;
+
+    let saveProduct = await Products.getProductById(catalogId);
+    saveProduct.detail.map((det) => {
       if (det.title == productDetail.title) {
-        det = productDetail;
+        det.title = productDetail.type;
+        det.type = productDetail.type;
+        det.description = productDetail.description;
+        det.price = productDetail.price;
+        return det;
       }
     });
-    // Products.push(saveProduct);
+    const result = Products.save(catalogId, saveProduct);
     setCurrentProduct(productDetail);
     setIsEdit(false);
     setShowAlert(true);
@@ -76,6 +101,7 @@ const Product = ({ _catalogId }) => {
       onSubmit={handleSubmit} onSelectImageUrl={handleSelectImageUrl}
       renderEdit={renderEdit}
       onCloseEdit={handleCloseEdit}
+      isMobile={isMobile}
     />
   );
 }

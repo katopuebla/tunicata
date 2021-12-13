@@ -57,7 +57,7 @@ const Login = () => {
 		<div>
 			<center>
 		  <h1>Bienvenido</h1>
-		  <p>{auth.currentUser.displayName}!estas detro de la apliucacion!</p>
+		  <p>{auth.currentUser.displayName}! Estas dentro de la aplicación !</p>
 		  <a onClick={() => auth.signOut()}>Sign-out</a>
 		  </center>
 		</div>
