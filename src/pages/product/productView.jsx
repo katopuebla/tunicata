@@ -1,11 +1,11 @@
 import React, { useContext } from 'react';
-import { Card, Col, Row, Carousel } from 'react-bootstrap';
+import { Modal, Button, Card, Col, Row, Carousel } from 'react-bootstrap';
 import AlertProduct from '../../components/AlertProduct';
 import FooterProduct from '../../components/FooterProduct';
 import { ProductContext } from '../../contexts/productContext';
 import ProductDetail from './productDetail';
 
-const ProductView = ({ onSubmit, onSelectImageUrl, renderEdit, onCloseEdit, isMobile }) => {
+const ProductView = ({ onSubmit, onSelectImageUrl, renderEdit, onCloseEdit, showDelete, setShowDelete, handleDelete, isMobile }) => {
     const { productDetail, urlImage } = useContext(ProductContext);
     return (
         <React.Fragment>
@@ -58,15 +58,36 @@ const ProductView = ({ onSubmit, onSelectImageUrl, renderEdit, onCloseEdit, isMo
                                     {/*<blockquote>{sizes}</blockquote>*/}
                                 </Card.Text>
                                 <div className="d-flex justify-content-end">
-                            {renderEdit()}
-                        </div>
-                        <FooterProduct onCloseEdit={onCloseEdit} />
+                                    {renderEdit()}
+                                </div>
+                                <FooterProduct onCloseEdit={onCloseEdit} />
                             </Col>
                         </Row>
-                       
+
                     </Card.Body>
                 </Card>
             </form>
+            <Modal
+                size="sm"
+                show={showDelete}
+                onHide={() => setShowDelete(false)}
+                aria-labelledby="example-modal-sizes-title-sm"
+            >
+                <Modal.Header closeButton>
+                    <Modal.Title id="example-modal-sizes-title-sm">
+                        Remove
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body>do you want to remove it ?</Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowDelete(false)}>
+                        No
+                    </Button>
+                    <Button variant="primary" onClick={handleDelete}>
+                        yes
+                    </Button>
+                </Modal.Footer>
+            </Modal>
         </React.Fragment>
     );
 }

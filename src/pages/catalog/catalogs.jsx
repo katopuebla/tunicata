@@ -9,9 +9,11 @@ import { ProductContext } from "../../contexts/productContext";
 import { GeneralContext } from "../../contexts/generalContext";
 
 const Catalogs = () => {
-  const [catalogs, setCatalogs] = useState([]);
+
   let { catalogId } = useParams();
   const history = useHistory();
+
+  const [catalogs, setCatalogs] = useState([]);
   const { productDetail, setProductDetail } = useContext( ProductContext );
   //const [catalogId, setCatalogId] = useState(useParams());
   const [show, setShow] = useState(false);

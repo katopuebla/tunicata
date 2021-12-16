@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Card, Accordion, Button, ListGroup, Modal } from "react-bootstrap";
-
+import { useParams, useHistory } from "react-router-dom";
 import { ProductContext } from "../../contexts/productContext";
 import Product from '../product/product';
 import Products from "../../services/Products-service";
@@ -11,11 +11,13 @@ const ProductList = () => {
   const [products, setProducts] = useState([]);
   const [show, setShow] = useState(false);
 
+  const history = useHistory();
+
   //functions
-  const handleClose = () => setShow(false);
+  //const handleClose = () => setShow(false);
   const handleShow = catalog => {
     setProductDetail(catalog);
-    setShow(true);
+    history.push(`/product/${catalog.collection}/${catalog.title}`)
   };
 
   async function fetchProducts() {
@@ -68,9 +70,9 @@ const ProductList = () => {
       <Accordion defaultActiveKey="0">
         {showProducts}
       </Accordion>
-      <Modal fluid show={show} onHide={handleClose}>
+      {/*<Modal fluid show={show} onHide={handleClose}>
         <Product _catalogId={productDetail.collection} />
-      </Modal>
+  </Modal>*/}
     </>
   );
 }

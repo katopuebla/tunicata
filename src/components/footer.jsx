@@ -2,9 +2,21 @@ import React from "react";
 import { FaEnvelope, FaWhatsapp, FaPhone } from "react-icons/fa";
 import { Row, Col } from 'react-bootstrap';
 
+var style = {
+  backgroundColor: "#F8F8F8",
+  borderTop: "1px solid #E7E7E7",
+  textAlign: "center",
+  padding: "20px",
+  position: "fixed",
+  left: "0",
+  bottom: "0",
+  height: "60px",
+  width: "100%",
+};
+
 const Footer = () => (
   <React.Fragment>
-    <div className="text-center text-lg-start bg-green ">
+    <div className="footer text-center text-lg-start bg-green ">
       <div className="text-center ">
         Entregas de 1 a 2 días bajo pedido,
           {" llámanos al  "}
