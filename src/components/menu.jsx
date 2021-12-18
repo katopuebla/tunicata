@@ -7,7 +7,7 @@ import { GeneralContext } from '../contexts/generalContext';
 import { auth } from '../firebase';
 import AddProduct from '../pages/product/addProduct';
 
-const imageMain = "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FTunicata.jpg?alt=media&token=06ef0868-51b0-42b1-a7b9-1bf819e4b813"
+const imageMain = "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FLogo%20pagina%20principal.png?alt=media&token=1f3eda25-c828-4dc7-a4bd-0bf4b8404196"
 // const logo = "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FTunicata_logo.png?alt=media&token=370fc1ea-7586-466e-b7b1-2345a9d69f26";
 
 const Menu = () => {
@@ -25,7 +25,7 @@ const Menu = () => {
     }
 
     return <React.Fragment>
-        <Navbar className="bg-green" variant="dark" expand="sm">
+        {/*<Navbar className="bg-green" variant="dark" expand="sm">
             <LinkContainer to="/">
                 <Navbar.Brand>
                     <img
@@ -36,18 +36,18 @@ const Menu = () => {
                     />{" "}
                 </Navbar.Brand>
             </LinkContainer>
-            {/*<Navbar.Toggle aria-controls="responsive-navbar-nav" />
-            <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav>
-                    <LinkContainer to="/login/">
-                        <Nav.Link>Login</Nav.Link>
-                    </LinkContainer>
-                </Nav>
-</Navbar.Collapse>*/}
-        </Navbar>
-        <Navbar className="bg-green" variant="light" expand="sm">
+            </Navbar>*/}
+        <Navbar className="bg-green" variant="light" expand="md">
             <LinkContainer to="/">
-                <Navbar.Brand />
+                <Navbar.Brand href="#home"> 
+                    <img
+                        alt="Tunicata"
+                        src={imageMain}
+                        width="100"
+                        height="auto"
+                        className="d-inline-block align-top"
+                    />
+                </Navbar.Brand> 
             </LinkContainer>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
@@ -89,10 +89,10 @@ const Menu = () => {
                 {
                     console.log('autenticado', autenticado),
                     autenticado
-                        ? <Navbar.Text>
+                        ? <Navbar.Text className="ms-auto">
                             <a href="#" onClick={signOut}><FaUserSlash /> </a>
                         </Navbar.Text>
-                        : <Nav>
+                        : <Nav className="ms-auto">
                             <LinkContainer to="/login">
                                 <Nav.Link><FaUserCog /> </Nav.Link>
                             </LinkContainer>

@@ -22,7 +22,8 @@ body {
 }*/
 
 .bg-green {
-  background: #86b404;
+ /*background: #86b404;*/
+ background: #8dd88d
 }
 
 .bg-green-dif {
@@ -44,7 +45,7 @@ body {
     margin-top: auto;
     left: 0;
     bottom: 0;
-    height: 20%;
+    height: 10%;
     width: 100%;
 }
 
@@ -61,4 +62,9 @@ body {
   border-radius: 15px;
   font-size: 18px;
   text-align: center;
+}
+
+.carousel-caption {
+  bottom: 0;
+  padding: 50px;
 }
