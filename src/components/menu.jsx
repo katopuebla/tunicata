@@ -7,7 +7,7 @@ import { GeneralContext } from '../contexts/generalContext';
 import { auth } from '../firebase';
 import AddProduct from '../pages/product/addProduct';
 
-const imageMain = "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FLogo%20pagina%20principal.png?alt=media&token=1f3eda25-c828-4dc7-a4bd-0bf4b8404196"
+const imageMain = "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FLogo.png?alt=media&token=3f51ea5a-5a30-4819-93b4-34197cefcd4a"
 // const logo = "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FTunicata_logo.png?alt=media&token=370fc1ea-7586-466e-b7b1-2345a9d69f26";
 
 const Menu = () => {
@@ -43,7 +43,7 @@ const Menu = () => {
                     <img
                         alt="Tunicata"
                         src={imageMain}
-                        width="100"
+                        width="150"
                         height="auto"
                         className="d-inline-block align-top"
                     />

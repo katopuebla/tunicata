@@ -1,16 +1,18 @@
 import React from 'react';
 import { Container, Carousel, Row } from 'react-bootstrap';
 
-const HomeView = ({ showCarrusel, showCarruselText, showProduct }) => (
-  <Container>
+const HomeView = ({ showCarrusel, showCarruselText, showCatalogs, isMobile}) => (
+  <Container fluid>
     <Carousel>
       {showCarrusel}
     </Carousel>
-    <Carousel cols={2} rows={1} gap={10} loop>
+    {isMobile ? (
+    <Carousel>
       {showCarruselText}
     </Carousel>
-    <Row className="justify-content-md-center">
-      {showProduct}
+    ) : ( <></> )}
+    <Row className="justify-content-lg-center" xs={2} md={4} lg={6}>
+      {showCatalogs}
     </Row>
   </Container>
 )

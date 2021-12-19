@@ -5,6 +5,7 @@ import { Container, Row, Image, Carousel, Alert, Button, Col } from 'react-boots
 
 //import { Products } from "../catalogs.json";
 import Products from "../services/Products-service";
+import Catalogs from "../services/Catalogs-service";
 import { Carrusels, CarruselsText } from "../initial.json";
 
 import HomeView from "./HomeView";
@@ -16,23 +17,17 @@ const Home = () => {
   const history = useHistory();
   const carrusel = Carrusels;
   const carruselText = CarruselsText;
-  const [products, setProducts] = useState([]);
+  const [catalogs, setCatalogs] = useState([]);
   const { isMobile } = useContext(GeneralContext);
 
-  async function getFisrtItemCollection() {
+  async function getCollection() {
     const list = [];
-    const infoData = await Products.getAll();
-    // filter only one field in Collections
-    infoData.forEach(data => {
-      const collections = data.detail;
-      if (collections)
-        list.push(collections[0]);
-    })
-    setProducts(list);
+    const data = await Catalogs.getDataById("Collection");
+    setCatalogs(data.detail);
   }
 
   useEffect(async () => {
-    getFisrtItemCollection();
+    getCollection();
   }, []);
 
   const handleCatalogClick = (_catalogName =>
@@ -41,35 +36,76 @@ const Home = () => {
 
   const showCarrusel = carrusel.map((catalog, index) => {
     return (
-      <Carousel.Item key={index}>
+      <Carousel.Item key={index} fluid>
         <Row className="justify-content-lg-center">
-          <Col xs lg={10} >
-            <img className="d-block w-100" alt="slide" width="100%" thumbnail src={catalog.url} />
+          <Col  >
+            {isMobile ? (
+              <Image className="d-block w-100" alt="slide" src={catalog.url} />
+            ) : (
+              <Image className="d-block w-100" alt="slide" src={catalog.url} style={{ width: '90%', height: '81%' }} />
+            )}
           </Col>
         </Row>
-        {/*<Carousel.Caption>          
-          <p>{catalog.description}</p>
-        </Carousel.Caption>
-        <Alert key={index} variant={'light'}>{catalog.description}</Alert>*/}
+        {isMobile ? (<></>) : (
+          <Carousel.Caption>
+            <Row className="justify-content-lg-center">
+              <Col >
+                <Alert key={index} variant={'light'}>
+                  <center>
+                    <Row>
+                      <Col>
+                        <Image src={catalog.urlLeft} style={{ width: '15', height: 'auto' }} />
+                      </Col>
+                      <Col xs={6}>
+                        <h8>{catalog.description}</h8>
+                      </Col>
+                      <Col>
+                        <Image src={catalog.urlRight} style={{ width: '15', height: 'auto' }} />
+                      </Col>
+                    </Row>
+                  </center>
+                </Alert>
+              </Col>
+            </Row>
+          </Carousel.Caption>
+        )}
       </Carousel.Item>)
   });
   const showCarruselText = carruselText.map((catalog, index) => {
     return (
       <Carousel.Item interval={5000} key={index}>
         <Row className="justify-content-lg-center">
-          <Col xs md={12} >
-            <Alert key={index} variant={'light'}><h10>{catalog.description}</h10></Alert>
+          <Col >
+            <Alert key={index} variant={'light'}>
+              <center>
+                <Row>
+                  <Col>
+                    <Image src={catalog.urlLeft} style={{ width: '15', height: 'auto' }} />
+                  </Col>
+                  <Col xs={6}>
+                    <h8>{catalog.description}</h8>
+                  </Col>
+                  <Col><Image src={catalog.urlRight} style={{ width: '15', height: 'auto' }} />
+                  </Col>
+                </Row>
+              </center>
+            </Alert>
           </Col>
         </Row>
       </Carousel.Item>)
   });
+  /*
+    const showProduct = products && products.map((item, index) => {
+      const product = item;
+      return (<CardMenu item={product} key={index} onCatalogClick={handleCatalogClick} isMobile={isMobile} />)
+    });
+  */
+  const showCatalogs = catalogs && catalogs.map((item, index) => {
 
-  const showProduct = products && products.map((item, index) => {
-    const product = item;
-    return (<CardMenu item={product} key={index} onCatalogClick={handleCatalogClick} isMobile={isMobile} />)
+    return (<CardMenu item={item} key={index} onCatalogClick={handleCatalogClick} isMobile={isMobile} />)
   });
 
-  return <HomeView showCarrusel={showCarrusel} showCarruselText={showCarruselText} showProduct={showProduct} />
+  return <HomeView showCarrusel={showCarrusel} showCarruselText={showCarruselText} showCatalogs={showCatalogs} isMobile={isMobile} />
 
 }
 
