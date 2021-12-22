@@ -2,11 +2,14 @@ import React, { useContext } from 'react';
 import { Modal, Button, Card, Col, Row, Carousel } from 'react-bootstrap';
 import AlertProduct from '../../components/AlertProduct';
 import FooterProduct from '../../components/FooterProduct';
+import { GeneralContext } from '../../contexts/generalContext';
 import { ProductContext } from '../../contexts/productContext';
-import ProductDetail from './productDetail';
+import ProductDetailView from './productDetailView';
 
-const ProductView = ({ onSubmit, onSelectImageUrl, renderEdit, onCloseEdit, showDelete, setShowDelete, handleDelete, isMobile }) => {
-    const { productDetail, urlImage } = useContext(ProductContext);
+const ProductView = ({ urlImage, onSubmit, onSelectImageUrl, renderEdit, onCloseEdit, showDelete, setShowDelete, handleDelete }) => {
+    const { productDetail } = useContext(ProductContext);
+    const { isMobile } = useContext(GeneralContext);
+
     return (
         <React.Fragment>
             <form onSubmit={onSubmit}>
@@ -20,31 +23,35 @@ const ProductView = ({ onSubmit, onSelectImageUrl, renderEdit, onCloseEdit, show
                                     <Row>
                                         <Col sm={8}>
                                             <Carousel>
-                                                <Carousel.Item>
-                                                    <Card.Img src={urlImage} width="30%" height="auto" />
-                                                </Carousel.Item>
-                                                <Carousel.Item>
-                                                    <Card.Img src={urlImage} width="30%" height="auto" />
-                                                </Carousel.Item>
+                                                {
+                                                    productDetail && productDetail.images.map((url) => {
+                                                        return <Carousel.Item>
+                                                            <Card.Img width="90%" height="200"
+                                                                src={url}
+                                                                className="img"
+
+                                                            />
+                                                        </Carousel.Item>
+                                                    })
+                                                }
                                             </Carousel>
                                         </Col>
                                     </Row>
                                 ) : (
                                     <Row>
                                         <Col md={2}>
-                                            <Card.Img width="1%" height="auto"
-                                                src={productDetail.url}
-                                                className="img"
-                                                onClick={() => onSelectImageUrl(productDetail.url)}
-                                            />
-                                            <Card.Img width="1%" height="auto"
-                                                src={productDetail.url}
-                                                className="img"
-                                                onClick={() => onSelectImageUrl(productDetail.url)}
-                                            />
+                                            {
+                                                productDetail && productDetail.images.map((url) => {
+                                                    return <Card.Img width="1%" height="auto"
+                                                        src={url}
+                                                        className="img"
+                                                        onClick={() => onSelectImageUrl(url)}
+                                                    />
+                                                })
+                                            }
                                         </Col>
-                                        <Col xs md={8}>
-                                            <Card.Img src={urlImage} width="20%" height="auto" />
+                                        <Col md={8}>
+                                            <Card.Img src={urlImage} width="auto" height="300" />
                                         </Col>
                                     </Row>
                                 )}
@@ -52,9 +59,9 @@ const ProductView = ({ onSubmit, onSelectImageUrl, renderEdit, onCloseEdit, show
                             </Col>
                             <Col md={6}>
                                 <Card.Text>
-                                    <ProductDetail />
+                                    <ProductDetailView />
                                     <br />
-                                    <b>Talla</b>
+                                    {/* <b>Talla</b> */}
                                     {/*<blockquote>{sizes}</blockquote>*/}
                                 </Card.Text>
                                 <div className="d-flex justify-content-end">

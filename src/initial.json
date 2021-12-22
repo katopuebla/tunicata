@@ -3,40 +3,40 @@
    {
       "title": "carrusel1.png",
      "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2Fcarrusel1.png?alt=media&token=6e72060c-e838-4943-b91a-241934fcbf71",
-     "description": "    Fabricante de ropa para perritos",
-     "urlLeft": "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2Fhuella%20izquierda.png?alt=media&token=b7c0b1f4-0a4e-4b00-b168-64252e471f66",
-     "urlRight": "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2Fhuella%20derecha.png?alt=media&token=5d3fc905-9c90-4324-a31e-04e0683ba764"
-  },
+     "description": "Fabricante de camas para perros y gatos",
+     "urlLeft": "",
+     "urlRight": ""
+ },
     {
        "title": "carrusel2.png",
       "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2Fcarrusel2.png?alt=media&token=bd71e80a-ac27-4733-8f6a-3ec2f2da86d5",
-      "description": "Fabricante de camas para perritos y gatitos",
-      "urlLeft": "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2Fhuella%20izquierda.png?alt=media&token=b7c0b1f4-0a4e-4b00-b168-64252e471f66",
-      "urlRight": "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2Fhuella%20derecha.png?alt=media&token=5d3fc905-9c90-4324-a31e-04e0683ba764"
+      "description": "    Fabricante de ropa para perros",
+      "urlLeft": "",
+      "urlRight": ""
      },
     {
        "title": "carrusel3.png",
       "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2Fcarrusel3.png?alt=media&token=0a15a734-dafb-4bc8-9879-5d97d5d7c7e7",
       "description": "Tienda en linea de productos para animales de compañia en México",
-      "urlLeft": "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2Fhuella%20izquierda.png?alt=media&token=b7c0b1f4-0a4e-4b00-b168-64252e471f66",
-      "urlRight": "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2Fhuella%20derecha.png?alt=media&token=5d3fc905-9c90-4324-a31e-04e0683ba764"
+      "urlLeft": "",
+      "urlRight": ""
      }
   ],
   "CarruselsText" :[
     {
-      "description": "  Fabricante de ropa para perritos",
-      "urlLeft": "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2Fhuella%20izquierda.png?alt=media&token=b7c0b1f4-0a4e-4b00-b168-64252e471f66",
-      "urlRight": "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2Fhuella%20derecha.png?alt=media&token=5d3fc905-9c90-4324-a31e-04e0683ba764"
+      "description": "  Fabricante de ropa para perros",
+      "urlLeft": "",
+      "urlRight": ""
      },
     {
-      "description": "Fabricante de camas para perritos y gatitos",
-      "urlLeft": "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2Fhuella%20izquierda.png?alt=media&token=b7c0b1f4-0a4e-4b00-b168-64252e471f66",
-      "urlRight": "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2Fhuella%20derecha.png?alt=media&token=5d3fc905-9c90-4324-a31e-04e0683ba764"
+      "description": "Fabricante de camas para perros y gatos",
+      "urlLeft": "",
+      "urlRight": ""
      },
     {
       "description": "Tienda en linea de productos para animales de compañia en México",
-      "urlLeft": "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2Fhuella%20izquierda.png?alt=media&token=b7c0b1f4-0a4e-4b00-b168-64252e471f66",
-      "urlRight": "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2Fhuella%20derecha.png?alt=media&token=5d3fc905-9c90-4324-a31e-04e0683ba764"
+      "urlLeft": "",
+      "urlRight": ""
      }
   ],
   "Measure": [

@@ -6,31 +6,32 @@ import Products from "../../services/Products-service";
 import { GeneralContext } from "../../contexts/generalContext";
 import { ProductContext } from "../../contexts/productContext";
 import ProductView from "./productView";
+import fileService from "../../services/File-service";
 
 const Product = ({ _catalogId }) => {
 
   const {
     productDetail, setProductDetail,
-    isEdit, setIsEdit,
-    urlImage, setUrlImage,
+    setIsEdit,
     setShowAlert, setShowAlertError,
     showEdit, setShowEdit,
+    imagesAsFile,
   } = useContext(ProductContext);
 
-  const { autenticado, isMobile } = useContext(GeneralContext);
+  const { autenticado } = useContext(GeneralContext);
   let { catalogId } = useParams();
   let { productId } = useParams();
   const history = useHistory();
 
+  const [urlImage, setUrlImage] = useState(productDetail.url);
   const [showDelete, setShowDelete] = useState(false);
 
   const [currentProduct, setCurrentProduct] = useState(productDetail);
-  setUrlImage(productDetail.url);
 
   const renderEdit = () => {
     if (autenticado && showEdit)
       return <><Button className="justify-content-end" onClick={handleEdit}>Edit</Button>
-      {'  '}<Button className="justify-content-start" onClick={sDelete}>Remove</Button>
+        {'  '}<Button className="justify-content-start" onClick={sDelete}>Remove</Button>
       </>
     else return <span></span>
   }
@@ -79,17 +80,28 @@ const Product = ({ _catalogId }) => {
       catalogId = _catalogId;
 
     let saveProduct = await Products.getProductById(catalogId);
+    let imgUrls = [];
+    if (imagesAsFile.length > 0) {
+      imgUrls = await fileService.imagesUpload(catalogId, imagesAsFile);
+    }
     saveProduct.detail.map((det) => {
       if (det.title == productDetail.title) {
         det.title = productDetail.type;
         det.type = productDetail.type;
         det.description = productDetail.description;
         det.price = productDetail.price;
+        if (imgUrls.length > 0) {
+          productDetail.url = imgUrls[0];
+          productDetail.images = imgUrls;
+          det.url = productDetail.url;
+          det.images = productDetail.images;
+        }
         return det;
       }
     });
     const result = Products.save(catalogId, saveProduct);
     setCurrentProduct(productDetail);
+    handleSelectImageUrl(productDetail.url);
     setIsEdit(false);
     setShowAlert(true);
     setShowAlertError(false);
@@ -98,13 +110,13 @@ const Product = ({ _catalogId }) => {
   return (
     <ProductView
       urlImage={urlImage}
-      onSubmit={handleSubmit} onSelectImageUrl={handleSelectImageUrl}
+      onSubmit={handleSubmit}
+      onSelectImageUrl={handleSelectImageUrl}
       renderEdit={renderEdit}
       onCloseEdit={handleCloseEdit}
       showDelete={showDelete}
       setShowDelete={setShowDelete}
       handleDelete={handleDelete}
-      isMobile={isMobile}
     />
   );
 }

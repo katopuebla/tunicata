@@ -28,21 +28,21 @@ const AddProductView = ({ showAdd, handleClose, handleSave, handleFile
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId='description'>
-                            <Form.Label column sm="2"> description</Form.Label>
+                            <Form.Label column sm="2"> Descripción</Form.Label>
                             <Col sm="10">
                                 <Form.Control onChange={setItem} required/>
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId='price'>
-                            <Form.Label column sm="2"> price</Form.Label>
+                            <Form.Label column sm="2"> precio</Form.Label>
                             <Col sm="10">
                                 <Form.Control onChange={setItem} required/>
                             </Col>
                         </Form.Group>
-                        <Form.Group as={Row} controlId='name'>
-                            <Form.Control type="file" label="nombre" onChange={handleFile} required/>
+                        <Form.Group as={Row} controlId='files'>
+                            <Form.Control type="file" multiple label="files" onChange={handleFile} size="sm" required/>
                         </Form.Group>
-                        <b>Talla</b>
+                        {/* <b>Talla</b> */}
                         {/* <blockquote>{sizes}</blockquote> */}
 
                         <div className="card-footer">

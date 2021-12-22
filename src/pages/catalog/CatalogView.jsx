@@ -4,7 +4,7 @@ import Product from '../product/product';
 
 const CatalogView = ({showCatalogos, show, onClose, catalogId}) => (
     <React.Fragment>
-        <Row xs={3} md={6} className="justify-content-md-center">
+        <Row xs={2} md={4} lg={6} className="justify-content-md-center">
             {showCatalogos}
         </Row>
     </React.Fragment>

@@ -13,12 +13,11 @@ import { Alert } from 'react-bootstrap';
     type: '',
     description: '',
     price: 0,
-    imgSize: {
-      id: 0,
-      name: '',
-      type: '',
+    images: [
+      {
       url: ''
-    }
+      }
+  ]
 }
 
 const AddProduct = ({ showAdd, setShowAdd }) => {
@@ -33,7 +32,7 @@ const AddProduct = ({ showAdd, setShowAdd }) => {
   const handleShow = () => setShowAdd(true);
 
   //const allInputs = { imgUrl: '' }
-  const [imageAsFile, setImageAsFile] = useState('')
+  const [imageAsFile, setImageAsFile] = useState([])
   //const [imageAsUrl, setImageAsUrl] = useState(allInputs)
 
   const [collection, setCollection] = useState([]);
@@ -53,8 +52,11 @@ const AddProduct = ({ showAdd, setShowAdd }) => {
 
   console.log(imageAsFile)
     const handleImageAsFile = (e) => {
-    const image = e.target.files[0]
-    setImageAsFile(imageFile => (image))
+    /* // only one file
+    const images = e.target.files[0];
+    setImageAsFile(imageFile => (images)) */ 
+    const images = e.target.files;
+    setImageAsFile(images)
   }
 
   const setItem = e => {
@@ -81,13 +83,11 @@ const AddProduct = ({ showAdd, setShowAdd }) => {
       return;
     }
 
-    const imgUrl = await fileService.imageUpload(form.collection, imageAsFile);
-    //setImageAsUrl({ ...imageAsUrl, imgUrl: imgUrl });
-    //console.log('form', form);
+    const imgUrls = await fileService.imagesUpload(form.collection, imageAsFile);
     const newForm = form;
     newForm.type = form.title;
-    newForm.url = imgUrl;
-    newForm.name = imageAsFile.name;
+    newForm.url = imgUrls[0];
+    newForm.images = imgUrls;
     newForm.type = form.title;
     //console.log('saving', newForm);
     var detail = [];

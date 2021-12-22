@@ -11,6 +11,7 @@ import { Carrusels, CarruselsText } from "../initial.json";
 import HomeView from "./HomeView";
 import CardMenu from "../components/CardMenu";
 import { GeneralContext } from "../contexts/generalContext";
+import bannerShort from "../components/bannerShort";
 
 const Home = () => {
 
@@ -42,7 +43,7 @@ const Home = () => {
             {isMobile ? (
               <Image className="d-block w-100" alt="slide" src={catalog.url} />
             ) : (
-              <Image className="d-block w-100" alt="slide" src={catalog.url} style={{ width: '90%', height: '81%' }} />
+              <Image className="d-block w-100" alt="slide" src={catalog.url} style={{ width: '80%', height: '80%' }} />
             )}
           </Col>
         </Row>
@@ -50,21 +51,7 @@ const Home = () => {
           <Carousel.Caption>
             <Row className="justify-content-lg-center">
               <Col >
-                <Alert key={index} variant={'light'}>
-                  <center>
-                    <Row>
-                      <Col>
-                        <Image src={catalog.urlLeft} style={{ width: '15', height: 'auto' }} />
-                      </Col>
-                      <Col xs={6}>
-                        <h8>{catalog.description}</h8>
-                      </Col>
-                      <Col>
-                        <Image src={catalog.urlRight} style={{ width: '15', height: 'auto' }} />
-                      </Col>
-                    </Row>
-                  </center>
-                </Alert>
+                {bannerShort(catalog.description)}
               </Col>
             </Row>
           </Carousel.Caption>
@@ -76,20 +63,7 @@ const Home = () => {
       <Carousel.Item interval={5000} key={index}>
         <Row className="justify-content-lg-center">
           <Col >
-            <Alert key={index} variant={'light'}>
-              <center>
-                <Row>
-                  <Col>
-                    <Image src={catalog.urlLeft} style={{ width: '15', height: 'auto' }} />
-                  </Col>
-                  <Col xs={6}>
-                    <h8>{catalog.description}</h8>
-                  </Col>
-                  <Col><Image src={catalog.urlRight} style={{ width: '15', height: 'auto' }} />
-                  </Col>
-                </Row>
-              </center>
-            </Alert>
+            {bannerShort(catalog.description)}
           </Col>
         </Row>
       </Carousel.Item>)

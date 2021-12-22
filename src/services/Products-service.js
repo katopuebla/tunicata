@@ -14,6 +14,16 @@ import { collection, doc, setDoc, getDoc, getDocs, updateDoc } from 'firebase/fi
         return infoData;
     };
 
+    const getIds = async () => {
+        //const infoData = [];
+        const items = await getDocs(itemsRef);
+        const idData = items.docs.map(doc => doc.id);
+        /*docs.forEach(doc => {
+            infoData.push(doc.data());
+        });*/
+        return idData;
+    };
+
     const getProductById = async (key) => {
         const docRef = doc(db, COLLECTION, key);
         const infoData = await getDoc(docRef);
@@ -25,7 +35,7 @@ import { collection, doc, setDoc, getDoc, getDocs, updateDoc } from 'firebase/fi
         const infoData = await getDoc(docRef);
         const data = infoData.data();
         let detail = {};
-        data.detail.forEach(det => {
+        data && data.detail.forEach(det => {
             if (det.title == title) {
                 detail = det;
               }
@@ -75,6 +85,7 @@ import { collection, doc, setDoc, getDoc, getDocs, updateDoc } from 'firebase/fi
 //export default ProductService;
 export default {
   getAll,
+  getIds,
   getProductById,
   findProductDetail,
   isExitProductDetail,

@@ -10,6 +10,7 @@ export const ProductProvider = ({ children }) => {
     const [showAlert, setShowAlert] = useState(false);
     const [showAlertError, setShowAlertError] = useState(false);
     const [showEdit, setShowEdit] = useState(true);
+    const [imagesAsFile, setImagesAsFile] = useState([]);
 
     return (
         <ProductContext.Provider value={{
@@ -19,6 +20,7 @@ export const ProductProvider = ({ children }) => {
             showAlert, setShowAlert,
             showAlertError, setShowAlertError,
             showEdit, setShowEdit,
+            imagesAsFile, setImagesAsFile,
         }}>
             { children}
         </ProductContext.Provider>
