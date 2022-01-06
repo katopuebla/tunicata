@@ -39,7 +39,7 @@ const ProductList = () => {
   }
 
  const showProducts = products && products.map((item, index) => {
-   const id = item[0].collection;
+   const id = item && item[0].collection;
     return (
       <div>
         <Accordion.Item eventKey={"" + index}>
@@ -47,7 +47,7 @@ const ProductList = () => {
             <Accordion.Body>
               <ListGroup>
                 {
-                  item.map((detail, idx) => {
+                  item && item.map((detail, idx) => {
                     return (
                       <ListGroup.Item action key={idx}
                         onClick={() => { handleShow(detail); }} >

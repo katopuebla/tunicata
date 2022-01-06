@@ -78,10 +78,7 @@ const Menu = () => {
                                 return <LinkContainer key={index} to={`/catalogs/${id}/`}>
                                     <NavDropdown.Item>{id}</NavDropdown.Item>
                                 </LinkContainer>
-                            }
-
-                            )
-
+                            })
                         }
                         {/* <LinkContainer to="/catalogs/Adelita/">
                             <NavDropdown.Item>Adelita</NavDropdown.Item>
