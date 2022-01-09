@@ -1,5 +1,5 @@
 {
-  "Carrusels" :[
+  "carrusels" :[
    {
       "title": "carrusel1.png",
      "url" : "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2Fcarrusel1.png?alt=media&token=6e72060c-e838-4943-b91a-241934fcbf71",
@@ -22,7 +22,7 @@
       "urlRight": ""
      }
   ],
-  "CarruselsText" :[
+  "carruselsText" :[
     {
       "description": "  Fabricante de ropa para perros",
       "urlLeft": "",

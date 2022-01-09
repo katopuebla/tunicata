@@ -18,21 +18,21 @@ const Footer = () => (
   <React.Fragment>
     <div className="footer text-center text-lg-start bg-green ">
       <div className="text-center ">
-        Entregas de 1 a 2 días bajo pedido,
+       {/*} Entregas de 1 a 2 días bajo pedido,
           {" llámanos al  "}
         <FaPhone />
-        <a href="tel:22-24890610"> (22) 2 489 0610</a>
-        {" ó por mensaje al "}
+        <a href="tel:22-24890610"> (22) 2 489 0610</a>*/}
+        {" contactanos al "}
         <FaWhatsapp />
-        <a href="https://api.whatsapp.com/send?phone=522224890610">
+        <a href="https://api.whatsapp.com/send?phone=522213243992">
           {"   "}
-            (22)2 48 90610
+            (22)1 324 3992
           </a>
-        {" también por correo al  "}
+        {" ó también por correo al  "}
         <FaEnvelope />
         <a href="mailto:tunicatadisenos@gmail.com">
           {"  "}
-            tunicatadisenos@gmail.com
+            tunicataguaf@gmail.com
           </a>
       </div>
       <div> Siguenos en:</div>

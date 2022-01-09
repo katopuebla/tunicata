@@ -1,8 +1,22 @@
-import React from 'react';
-import { Modal, Form, Col, Row, Button, Alert } from 'react-bootstrap';
+import React, { useContext, useState } from 'react';
+import { Modal, Form, Col, Row, Button } from 'react-bootstrap';
+import { GeneralContext } from '../../contexts/generalContext';
+import LoadingSpinner from '../../components/loadingSpinner';
+import ReactMde from "react-mde";
+import 'react-mde/lib/styles/css/react-mde-all.css';
+import * as Showdown from "showdown";
 
-const AddProductView = ({ showAdd, handleClose, handleSave, handleFile
-        ,setItem, showOption, AlertAddProduct, validated }) => {
+const converter = new Showdown.Converter({
+    tables: true,
+    simplifiedAutoLink: true,
+    strikethrough: true,
+    tasklists: true
+});
+
+const AddProductView = ({ form, showAdd, handleClose, handleSave, handleFile
+    , setItem, handleValueChange, showOption, AlertAddProduct, validated }) => {
+    const { setLoading } = useContext(GeneralContext);
+    const [selectedTab, setSelectedTab] = useState("write");
     return (
         <div>
             <Modal show={showAdd} onHide={handleClose}>
@@ -15,7 +29,7 @@ const AddProductView = ({ showAdd, handleClose, handleSave, handleFile
                         <Form.Group as={Row} controlId="collection">
                             <Form.Label column sm="2">Colección</Form.Label>
                             <Col sm="10">
-                                <Form.Select defaultValue="Seleccionar..."  onChange={setItem} required>
+                                <Form.Select defaultValue="Seleccionar..." onChange={setItem} required>
                                     <option value=''>Seleccionar...</option>
                                     {showOption}
                                 </Form.Select>
@@ -30,23 +44,34 @@ const AddProductView = ({ showAdd, handleClose, handleSave, handleFile
                         <Form.Group as={Row} controlId='description'>
                             <Form.Label column sm="2"> Descripción</Form.Label>
                             <Col sm="10">
-                                <Form.Control onChange={setItem} required/>
+                                {/*<Form.Control onChange={setItem} required />*/}
+                                <ReactMde
+                                    value={form.description}
+                                    onChange={handleValueChange}
+                                    selectedTab={selectedTab}
+                                    onTabChange={setSelectedTab}
+                                    generateMarkdownPreview={markdown =>
+                                        Promise.resolve(converter.makeHtml(markdown))
+                                    }
+                                />
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId='price'>
                             <Form.Label column sm="2"> precio</Form.Label>
                             <Col sm="10">
-                                <Form.Control onChange={setItem} required/>
+                                <Form.Control onChange={setItem} required />
                             </Col>
                         </Form.Group>
                         <Form.Group as={Row} controlId='files'>
-                            <Form.Control type="file" multiple label="files" onChange={handleFile} size="sm" required/>
+                            <Form.Control type="file" multiple label="files" onChange={handleFile} size="sm" required />
                         </Form.Group>
                         {/* <b>Talla</b> */}
                         {/* <blockquote>{sizes}</blockquote> */}
 
                         <div className="card-footer">
-                            <Button type="submit">Agregar</Button>
+                            <Button type="submit" onClick={() => { if (validated) {setLoading(true) }}}>
+                                <LoadingSpinner name={'Agregar'} />
+                            </Button>
                         </div>
                     </Form>
                 </Modal.Body>

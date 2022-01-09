@@ -7,6 +7,7 @@ export const GeneralProvider = ({ children }) => {
     const [autenticado, setAutenticado] = useState(false);
     const [user, setUser] = useState('');
     const [isMobile, setIsMobile] = useState(false);
+    const [loading, setLoading] = useState(false); 
 
     //choose the screen size 
     const handleResize = () => {
@@ -27,6 +28,7 @@ export const GeneralProvider = ({ children }) => {
             autenticado, setAutenticado,
             user, setUser,
             isMobile, setIsMobile,
+            loading, setLoading,
         }}>
             { children}
         </GeneralContext.Provider>

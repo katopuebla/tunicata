@@ -18,7 +18,7 @@ const Product = ({ _catalogId }) => {
     imagesAsFile,
   } = useContext(ProductContext);
 
-  const { autenticado } = useContext(GeneralContext);
+  const { autenticado, setLoading } = useContext(GeneralContext);
   let { catalogId } = useParams();
   let { productId } = useParams();
   const history = useHistory();
@@ -105,6 +105,7 @@ const Product = ({ _catalogId }) => {
     setIsEdit(false);
     setShowAlert(true);
     setShowAlertError(false);
+    setLoading(false);
   }
 
   return (

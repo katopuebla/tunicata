@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { Accordion, ListGroup } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { ProductContext } from "../../contexts/productContext";
-import Product from '../product/product';
 import Products from "../../services/Products-service";
 //import { Products } from "../../catalogs.json";
 
@@ -34,9 +33,9 @@ const ProductList = () => {
      fetchProducts();
    }, []);
 
-  const handleUrl = (_url) => {
+  /*const handleUrl = (_url) => {
     setUrlImage(_url);
-  }
+  }*/
 
  const showProducts = products && products.map((item, index) => {
    const id = item && item[0].collection;

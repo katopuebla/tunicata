@@ -11,7 +11,7 @@ const FloatingMessage = () => (
       onClick={e => {
         e.preventDefault();
         window.location.href =
-          "https://api.whatsapp.com/send?phone=522224890610";
+          "https://api.whatsapp.com/send?phone=522213243992";
       }}
     >
       <FaWhatsapp />

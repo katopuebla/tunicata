@@ -6,7 +6,7 @@ import { Container, Row, Image, Carousel, Alert, Button, Col } from 'react-boots
 //import { Products } from "../catalogs.json";
 import Products from "../services/Products-service";
 import Catalogs from "../services/Catalogs-service";
-import { Carrusels, CarruselsText } from "../initial.json";
+import InitialInfo from "../initial.json";
 
 import HomeView from "./HomeView";
 import CardMenu from "../components/CardMenu";
@@ -16,8 +16,8 @@ import bannerShort from "../components/bannerShort";
 const Home = () => {
 
   const history = useHistory();
-  const carrusel = Carrusels;
-  const carruselText = CarruselsText;
+  const carrusel = InitialInfo.carrusels;
+  const carruselText = InitialInfo.carruselsText;
   const [catalogs, setCatalogs] = useState([]);
   const { isMobile } = useContext(GeneralContext);
 

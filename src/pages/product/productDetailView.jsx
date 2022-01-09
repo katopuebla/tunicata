@@ -1,10 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { FormControl, InputGroup } from 'react-bootstrap';
+import ReactMde from "react-mde";
+import 'react-mde/lib/styles/css/react-mde-all.css';
+import * as Showdown from "showdown";
+import MarkdownPreview from '@uiw/react-markdown-preview';
 import NumberFormat from 'react-number-format';
 import { ProductContext } from '../../contexts/productContext';
 
 const ProductDetailView = () => {
+
+    const converter = new Showdown.Converter({
+        tables: true,
+        simplifiedAutoLink: true,
+        strikethrough: true,
+        tasklists: true
+    });
+
     const { productDetail, setProductDetail, isEdit, setImagesAsFile } = useContext(ProductContext);
+    const [selectedTab, setSelectedTab] = useState("write");
 
     const setItem = name => {
         return ({ target: { value } }) => {
@@ -12,10 +25,15 @@ const ProductDetailView = () => {
         }
     };
 
+    const handleValueChange = (value) => {
+        //this.setState({ value });
+        setProductDetail(oldValues => ({ ...oldValues, ['description']: value }));
+    };
+
     const handleImageAsFile = (e) => {
         const images = e.target.files;
         setImagesAsFile(images)
-      }
+    }
 
     if (isEdit) {
         return (
@@ -28,7 +46,16 @@ const ProductDetailView = () => {
                 <br />
                 <InputGroup >
                     <InputGroup.Text id="inputGroup-sizing-default">Descripción</InputGroup.Text>
-                    <FormControl as="textarea" id="description" size="sm" defaultValue={productDetail.description} onChange={setItem('description')} />
+                    {/*<FormControl as="textarea" id="description" size="sm" defaultValue={productDetail.description} onChange={setItem('description')} />*/}
+                    <ReactMde
+                        value={productDetail.description}
+                        onChange={handleValueChange}
+                        selectedTab={selectedTab}
+                        onTabChange={setSelectedTab}
+                        generateMarkdownPreview={markdown =>
+                            Promise.resolve(converter.makeHtml(markdown))
+                        }
+                    />
                 </InputGroup>
                 <br />
                 <InputGroup className="mb-3">
@@ -38,8 +65,8 @@ const ProductDetailView = () => {
                     <br />
                 </InputGroup>
                 <InputGroup className="mb-3">
-                <FormControl type="file" id="images" multiple size="sm" onChange={handleImageAsFile} />
-  </InputGroup>
+                    <FormControl type="file" id="images" multiple size="sm" onChange={handleImageAsFile} />
+                </InputGroup>
             </React.Fragment>
         );
     } else {
@@ -47,7 +74,8 @@ const ProductDetailView = () => {
             <React.Fragment>
                 <b>Diseño:</b> {productDetail.type}
                 <br />
-                <b>Descripción:</b> {productDetail.description}
+                <b>Descripción:</b>
+                <MarkdownPreview source={productDetail.description} />
                 <br />
                 <mark>
                     <b>

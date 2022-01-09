@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import AddProductView from "./addProductView";
 import productService from "../../services/Products-service";
 import catalogService from "../../services/Catalogs-service";
 import fileService from "../../services/File-service";
 import { Alert } from 'react-bootstrap';
+import { GeneralContext } from '../../contexts/generalContext';
 
   const FORM = {
     collection: '',
@@ -25,8 +26,9 @@ const AddProduct = ({ showAdd, setShowAdd }) => {
   const [showAlert, setShowAlert] = useState(false);
   const [showAlertError, setShowAlertError] = useState(false);
   const [showMessage, setShowMessage] = useState('');
-
   const [validated, setValidated] = useState(false);
+
+  const { setLoading } = useContext(GeneralContext);
 
   const handleClose = () => setShowAdd(false);
   const handleShow = () => setShowAdd(true);
@@ -64,12 +66,18 @@ const AddProduct = ({ showAdd, setShowAdd }) => {
     setShowAlertError(false);
   }
 
+  const handleValueChange = (value) => {
+    setForm({ ...form, ['description']: value });
+    setShowAlertError(false);
+};
+
   const handleSave = async e => {
     e.preventDefault();
     const currentForm = e.currentTarget;
     if (currentForm.checkValidity() === false) {
       e.stopPropagation();
       setValidated(true);
+      setLoading(false);
       return;
     }
 
@@ -80,6 +88,7 @@ const AddProduct = ({ showAdd, setShowAdd }) => {
       console.log("Ya existe !!!");
       setShowMessage("Ya existe !!!");
       setShowAlertError(true);
+      setLoading(false);
       return;
     }
 
@@ -100,6 +109,7 @@ const AddProduct = ({ showAdd, setShowAdd }) => {
 
     await productService.save(form.collection, { detail : detail});
     setShowAdd(false);
+    setLoading(false);
   }
 
   const showOptionCollection = collection && collection.map(v => {
@@ -123,11 +133,14 @@ const AddProduct = ({ showAdd, setShowAdd }) => {
   );
   }
 
-  return <AddProductView showAdd={showAdd}
+  return <AddProductView 
+    form={form}
+    showAdd={showAdd}
     handleClose={handleClose}
     handleSave={handleSave}
     handleFile={handleImageAsFile}
     setItem={setItem} 
+    handleValueChange={handleValueChange}
     setSelect={collection}
     showOption={showOptionCollection}
     AlertAddProduct={AlertAddProduct}

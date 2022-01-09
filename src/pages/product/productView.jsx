@@ -24,8 +24,8 @@ const ProductView = ({ urlImage, onSubmit, onSelectImageUrl, renderEdit, onClose
                                         <Col sm={8}>
                                             <Carousel>
                                                 {
-                                                    productDetail && productDetail.images.map((url) => {
-                                                        return <Carousel.Item>
+                                                    productDetail && productDetail.images.map((url, index) => {
+                                                        return <Carousel.Item key={index}>
                                                             <Card.Img width="90%" height="200"
                                                                 src={url}
                                                                 className="img"
@@ -41,11 +41,12 @@ const ProductView = ({ urlImage, onSubmit, onSelectImageUrl, renderEdit, onClose
                                     <Row>
                                         <Col md={2}>
                                             {
-                                                productDetail && productDetail.images.map((url) => {
+                                                productDetail && productDetail.images.map((url, index) => {
                                                     return <Card.Img width="1%" height="auto"
                                                         src={url}
                                                         className="img"
                                                         onClick={() => onSelectImageUrl(url)}
+                                                        key={index}
                                                     />
                                                 })
                                             }
