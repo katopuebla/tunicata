@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from 'react';
+import React, { useState } from 'react';
 import { Container, Form, Button } from 'react-bootstrap';
 import { auth } from '../firebase';
 import { onAuthStateChanged, signInWithEmailAndPassword } from '@firebase/auth';
@@ -58,7 +58,7 @@ const Login = () => {
 			<center>
 		  <h1>Bienvenido</h1>
 		  <p>{auth.currentUser.displayName}! Estas dentro de la aplicación !</p>
-		  <a onClick={() => auth.signOut()}>Sign-out</a>
+		  <button onClick={() => auth.signOut()}>Sign-out</button>
 		  </center>
 		</div>
 	  );

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Modal, Row } from 'react-bootstrap';
-import Product from '../product/product';
+import { Row } from 'react-bootstrap';
 
 const CatalogView = ({showCatalogos, show, onClose, catalogId}) => (
     <React.Fragment>

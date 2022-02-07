@@ -17,19 +17,18 @@ const ProductList = () => {
     history.push(`/product/${catalog.collection}/${catalog.title}`)
   };
 
-  async function fetchProducts() {
-    const listData = [];
-    const infoData = await Products.getAll();
-    // filter only one field in Collections
-    infoData.forEach( data => {
-      const collections = data.detail;
-      if ( collections )
-        listData.push(collections);
-    });
-    setProducts(listData); 
-   }
-
-  useEffect( async () => {
+  useEffect(() => {
+    async function fetchProducts() {
+      const listData = [];
+      const infoData = await Products.getAll();
+      // filter only one field in Collections
+      infoData.forEach( data => {
+        const collections = data.detail;
+        if ( collections )
+          listData.push(collections);
+      });
+      setProducts(listData); 
+     }  
      fetchProducts();
    }, []);
 

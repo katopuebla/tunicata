@@ -1,8 +1,8 @@
 import React from "react";
-import { FaEnvelope, FaWhatsapp, FaPhone } from "react-icons/fa";
-import { Row, Col } from 'react-bootstrap';
+import { FaEnvelope, FaWhatsapp } from "react-icons/fa";
+// import { Row, Col } from 'react-bootstrap';
 
-var style = {
+/* var style = {
   backgroundColor: "#F8F8F8",
   borderTop: "1px solid #E7E7E7",
   textAlign: "center",
@@ -13,7 +13,7 @@ var style = {
   height: "60px",
   width: "100%",
 };
-
+ */
 const Footer = () => (
   <React.Fragment>
     <div className="footer text-center text-lg-start bg-green ">

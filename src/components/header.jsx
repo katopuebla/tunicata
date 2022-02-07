@@ -16,7 +16,7 @@ import AddProduct from "../pages/product/addProduct";
 
 const Header = () => {
 
-  const { autenticado, setAutenticado, setUser } = useContext(GeneralContext);
+  const { setAutenticado, setUser } = useContext(GeneralContext);
 
   useEffect(() => {
     auth.onAuthStateChanged(authUser => {
@@ -26,7 +26,7 @@ const Header = () => {
       } else {
       }
     })
-  }, []);
+  }, [setAutenticado, setUser]);
 
   return (
     <>

@@ -16,33 +16,32 @@ const Catalogs = () => {
   const [catalogs, setCatalogs] = useState([]);
   const { productDetail, setProductDetail } = useContext( ProductContext );
   //const [catalogId, setCatalogId] = useState(useParams());
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
   const { isMobile } = useContext(GeneralContext);
 
   //functions
-  const handleClose = () => setShow(false);
+  // const handleClose = () => setShow(false);
   const handleShowCatalog = (catalog) => {
     setProductDetail(catalog);
     history.push(`/product/${catalogId}/${catalog.title}`)
     //setShow(true);
   };
 
-  async function fetchProducts() {
-    const listData = [];
-    const infoData = await Products.getProductById(catalogId);
-    // filter only one field in Collections
-    infoData && infoData.detail.forEach( data => {
-      const collections = data;
-      if ( collections )
-        listData.push(collections);
-    });
-    setCatalogs(listData); 
-   }
-
-  useEffect( async () => {
+  useEffect(() => {
+    async function fetchProducts() {
+      const listData = [];
+      const infoData = await Products.getProductById(catalogId);
+      // filter only one field in Collections
+      infoData && infoData.detail.forEach( data => {
+        const collections = data;
+        if ( collections )
+          listData.push(collections);
+      });
+      setCatalogs(listData); 
+     }
     fetchProducts();
     //setCatalogs(conllection.detail);
-  }, []);
+  }, [catalogId]);
 
   const showCatalogos = catalogs && catalogs.map((catalog, i) =>
     <CardCatalog catalog={catalog} onShowCatalog={handleShowCatalog} key={i} isMobile={isMobile} />

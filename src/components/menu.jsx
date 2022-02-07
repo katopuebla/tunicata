@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Switch, Route, Link } from "react-router-dom";
+// import { Switch, Route, Link } from "react-router-dom";
 import { Nav, Navbar, NavDropdown, NavItem } from 'react-bootstrap';
 import { FaUserCog, FaUserSlash } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap'
@@ -26,18 +26,17 @@ const Menu = () => {
         auth.signOut().then(success => setAutenticado(false));
     }
 
-    async function fetchProducts() {
-        const listData = [];
-        const infoData = await ProductsService.getIds();
-        // filter only one field in Collections
-        infoData.forEach(data => {
-            if (data)
-                listData.push(data);
-        });
-        setProducts(listData);
-    }
-
-    useEffect(async () => {
+    useEffect(() => {
+        async function fetchProducts() {
+            const listData = [];
+            const infoData = await ProductsService.getIds();
+            // filter only one field in Collections
+            infoData.forEach(data => {
+                if (data)
+                    listData.push(data);
+            });
+            setProducts(listData);
+        }
         fetchProducts();
     }, []);
 
@@ -111,10 +110,9 @@ const Menu = () => {
                     </LinkContainer>
                 </Nav>
                 {
-                    console.log('autenticado', autenticado),
                     autenticado
                         ? <Navbar.Text className="ms-auto">
-                            <a href="#" onClick={signOut}><FaUserSlash /> </a>
+                            <button onClick={signOut}><FaUserSlash /> </button>
                         </Navbar.Text>
                         : <Nav className="ms-auto">
                             <LinkContainer to="/login">

@@ -27,6 +27,7 @@ const ProductDetailView = () => {
 
     const handleValueChange = (value) => {
         //this.setState({ value });
+        // eslint-disable-next-line no-useless-computed-key
         setProductDetail(oldValues => ({ ...oldValues, ['description']: value }));
     };
 

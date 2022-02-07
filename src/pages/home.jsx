@@ -1,10 +1,10 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useHistory } from "react-router-dom";
 //import { storage } from "../firebase";
-import { Container, Row, Image, Carousel, Alert, Button, Col } from 'react-bootstrap';
+import { Row, Image, Carousel, Col } from 'react-bootstrap';
 
 //import { Products } from "../catalogs.json";
-import Products from "../services/Products-service";
+// import Products from "../services/Products-service";
 import Catalogs from "../services/Catalogs-service";
 import InitialInfo from "../initial.json";
 
@@ -21,13 +21,11 @@ const Home = () => {
   const [catalogs, setCatalogs] = useState([]);
   const { isMobile } = useContext(GeneralContext);
 
-  async function getCollection() {
-    const list = [];
-    const data = await Catalogs.getDataById("Collection");
-    setCatalogs(data.detail);
-  }
-
-  useEffect(async () => {
+  useEffect(() => {
+    async function getCollection() {
+      const data = await Catalogs.getDataById("Collection");
+      setCatalogs(data.detail);
+    }
     getCollection();
   }, []);
 

@@ -1,5 +1,5 @@
-import { firebaseApp, db } from "../firebase";
-import { collection, doc, setDoc, getDoc, getDocs, updateDoc } from 'firebase/firestore';
+import { db } from "../firebase";
+import { collection, doc, setDoc, getDoc, getDocs } from 'firebase/firestore';
 
     const COLLECTION = 'Products';
     const itemsRef = collection(db, COLLECTION);
@@ -36,7 +36,7 @@ import { collection, doc, setDoc, getDoc, getDocs, updateDoc } from 'firebase/fi
         const data = infoData.data();
         let detail = {};
         data && data.detail.forEach(det => {
-            if (det.title == title) {
+            if (det.title === title) {
                 detail = det;
               }
         })
@@ -46,7 +46,7 @@ import { collection, doc, setDoc, getDoc, getDocs, updateDoc } from 'firebase/fi
     const isExitProductDetail = async (key, title) => {
         var exist = false;
         const detail =  await findProductDetail(key, title);
-        if ( detail && detail.title == title) {
+        if ( detail && detail.title === title) {
                 exist = true;
         }
         return exist;

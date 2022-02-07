@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Col, Row, Container, Image, Figure } from 'react-bootstrap';
+import { Card, Button, Col, Image } from 'react-bootstrap';
 import NumberFormat from 'react-number-format';
 
 const CardCatalog = ({ catalog, onShowCatalog, isMobile }) => (

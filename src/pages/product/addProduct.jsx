@@ -31,7 +31,7 @@ const AddProduct = ({ showAdd, setShowAdd }) => {
   const { setLoading } = useContext(GeneralContext);
 
   const handleClose = () => setShowAdd(false);
-  const handleShow = () => setShowAdd(true);
+  // const handleShow = () => setShowAdd(true);
 
   //const allInputs = { imgUrl: '' }
   const [imageAsFile, setImageAsFile] = useState([])
@@ -41,14 +41,12 @@ const AddProduct = ({ showAdd, setShowAdd }) => {
   const [form, setForm] = useState(FORM);
 
 
-  const [urlImage, setUrlImage] = useState('');
-
-  async function getCollection() {
-    const list = await catalogService.getDataById("Collection");
-    setCollection(list.detail);
-  }
-
-  useEffect( async () => {
+  // const [urlImage, setUrlImage] = useState('');
+  useEffect(() => {
+    async function getCollection() {
+      const list = await catalogService.getDataById("Collection");
+      setCollection(list.detail);
+    }
     getCollection();
    }, []);
 
@@ -67,6 +65,7 @@ const AddProduct = ({ showAdd, setShowAdd }) => {
   }
 
   const handleValueChange = (value) => {
+    // eslint-disable-next-line no-useless-computed-key
     setForm({ ...form, ['description']: value });
     setShowAlertError(false);
 };

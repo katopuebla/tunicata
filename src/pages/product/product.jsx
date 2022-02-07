@@ -20,7 +20,6 @@ const Product = ({ _catalogId }) => {
 
   const { autenticado, setLoading } = useContext(GeneralContext);
   let { catalogId } = useParams();
-  let { productId } = useParams();
   const history = useHistory();
 
   const [urlImage, setUrlImage] = useState(productDetail.url);
@@ -61,13 +60,15 @@ const Product = ({ _catalogId }) => {
 
     let removeProduct = await Products.getProductById(catalogId);
     removeProduct.detail.forEach((det, index) => {
-      if (det.title == productDetail.title) {
+      if (det.title === productDetail.title) {
         removeProduct.detail.splice(index, 1);
       }
     });
     const result = Products.save(catalogId, removeProduct);
-    setShowDelete(false);
-    history.push('/list');
+    result.then( resp => {
+      setShowDelete(false);
+      history.push('/list');
+    })
   }
 
   const handleSubmit = async (event) => {
@@ -84,8 +85,8 @@ const Product = ({ _catalogId }) => {
     if (imagesAsFile.length > 0) {
       imgUrls = await fileService.imagesUpload(catalogId, imagesAsFile);
     }
-    saveProduct.detail.map((det) => {
-      if (det.title == productDetail.title) {
+    saveProduct.detail.forEach((det) => {
+      if (det.title === productDetail.title) {
         det.title = productDetail.type;
         det.type = productDetail.type;
         det.description = productDetail.description;
@@ -100,11 +101,13 @@ const Product = ({ _catalogId }) => {
       }
     });
     const result = Products.save(catalogId, saveProduct);
-    setCurrentProduct(productDetail);
-    handleSelectImageUrl(productDetail.url);
-    setIsEdit(false);
-    setShowAlert(true);
-    setShowAlertError(false);
+    result.then( () => {
+      setCurrentProduct(productDetail);
+      handleSelectImageUrl(productDetail.url);
+      setIsEdit(false);
+      setShowAlert(true);
+      setShowAlertError(false);
+    })
     setLoading(false);
   }
 

@@ -1,5 +1,5 @@
-import { firebaseApp, db } from "../firebase";
-import { collection, doc, setDoc, getDoc, getDocs, updateDoc } from 'firebase/firestore';
+import { db } from "../firebase";
+import { collection, doc, setDoc, getDoc, getDocs } from 'firebase/firestore';
 
     const COLLECTION = 'Catalogs';
     const itemsRef = collection(db, COLLECTION);
@@ -20,7 +20,7 @@ import { collection, doc, setDoc, getDoc, getDocs, updateDoc } from 'firebase/fi
         var exist = false;
         const infoData =  await getDataById(key);
         infoData.detail.forEach(element => {
-            if (element.title == title) {
+            if (element.title === title) {
                 exist = true;
             }
         });
