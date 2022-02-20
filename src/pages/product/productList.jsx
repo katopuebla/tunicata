@@ -62,11 +62,11 @@ const ProductList = () => {
   });
 
   return (
-    <>
+    <div>
       <Accordion defaultActiveKey="0">
         {showProducts}
       </Accordion>
-    </>
+    </div>
   );
 }
 

@@ -2,7 +2,8 @@ import React from 'react';
 import { Container, Carousel, Row } from 'react-bootstrap';
 
 const HomeView = ({ showCarrusel, showCarruselText, showCatalogs, isMobile}) => (
-  <Container fluid>
+  <>
+  <Container className='wrapper'>
     <Carousel>
       {showCarrusel}
     </Carousel>
@@ -15,6 +16,7 @@ const HomeView = ({ showCarrusel, showCarruselText, showCatalogs, isMobile}) => 
       {showCatalogs}
     </Row>
   </Container>
+  </>
 )
 
 export default HomeView;

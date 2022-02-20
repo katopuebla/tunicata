@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 // import { Switch, Route, Link } from "react-router-dom";
-import { Nav, Navbar, NavDropdown, NavItem } from 'react-bootstrap';
+import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { FaUserCog, FaUserSlash } from 'react-icons/fa';
 import { LinkContainer } from 'react-router-bootstrap'
 import { GeneralContext } from '../contexts/generalContext';
@@ -79,29 +79,18 @@ const Menu = () => {
                                 </LinkContainer>
                             })
                         }
-                        {/* <LinkContainer to="/catalogs/Adelita/">
-                            <NavDropdown.Item>Adelita</NavDropdown.Item>
-                        </LinkContainer>
-                        <LinkContainer to="/catalogs/Pet_Lovers/">
-                            <NavDropdown.Item>Pet Lovers</NavDropdown.Item>
-                        </LinkContainer> */}
                     </NavDropdown>
                 </Nav>
                 {autenticado
-                    ? <Nav>
-                        <LinkContainer to="/list">
-                            <Nav.Link>productList</Nav.Link>
+                    ?
+                <NavDropdown title="Productos" id="collasible-nav-dropdown">
+                    <LinkContainer to="/list">
+                            <NavDropdown.Item>Lista Produtos</NavDropdown.Item>
                         </LinkContainer>
-                    </Nav>
-                    : <Nav></Nav>
-                }
-                {autenticado
-                    ? <Nav>
-                        <NavItem onClick={handleShowAdd}>addProduct</NavItem>
-                        {/*<LinkContainer to="/add">
-                            <Nav.Link>addProduct</Nav.Link>
-                        </LinkContainer>*/}
-                    </Nav>
+                        <LinkContainer to="#" onClick={handleShowAdd}>
+                            <NavDropdown.Item>Nuevo Producto</NavDropdown.Item>
+                        </LinkContainer>
+                    </NavDropdown>
                     : <Nav></Nav>
                 }
                 <Nav>

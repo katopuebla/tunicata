@@ -3,17 +3,15 @@ import "./style.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 //Components
-import Header from "./components/header";
+import GeneralRouter from "./pages/generalRouter";
 import FloatingMessage from "./components/floatingMessage";
-import Footer from "./components/footer";
 import { GeneralProvider } from "./contexts/generalContext";
 
 const App = () => (
   <div>
     <GeneralProvider>
-      <Header />
+      <GeneralRouter />
       <FloatingMessage />
-      <Footer />
     </GeneralProvider>
   </div>
 )

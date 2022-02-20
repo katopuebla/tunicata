@@ -11,7 +11,7 @@ import InitialInfo from "../initial.json";
 import HomeView from "./HomeView";
 import CardMenu from "../components/CardMenu";
 import { GeneralContext } from "../contexts/generalContext";
-import bannerShort from "../components/bannerShort";
+import BannerShort from "../components/bannerShort";
 
 const Home = () => {
 
@@ -36,22 +36,18 @@ const Home = () => {
   const showCarrusel = carrusel.map((catalog, index) => {
     return (
       <Carousel.Item key={index} fluid>
-        <Row className="justify-content-lg-center">
-          <Col  >
+        {/*<Row className="justify-content-lg-center">
+          <Col  >*/}
             {isMobile ? (
               <Image className="d-block w-100" alt="slide" src={catalog.url} />
             ) : (
-              <Image className="d-block w-100" alt="slide" src={catalog.url} style={{ width: '80%', height: '80%' }} />
+              <Image className="d-block w-100" alt="slide" src={catalog.url} style={{ width: '80%', height: 'auto' }} />
             )}
-          </Col>
-        </Row>
-        {isMobile ? (<></>) : (
+          {/*</Col>
+        </Row>*/}
+        { isMobile ? (<></>) : (
           <Carousel.Caption>
-            <Row className="justify-content-lg-center">
-              <Col >
-                {bannerShort(catalog.description)}
-              </Col>
-            </Row>
+            <BannerShort description={catalog.description} />
           </Carousel.Caption>
         )}
       </Carousel.Item>)
@@ -59,10 +55,10 @@ const Home = () => {
   const showCarruselText = carruselText.map((catalog, index) => {
     return (
       <Carousel.Item interval={5000} key={index}>
-        <Row className="justify-content-lg-center">
+        <Row className="justify-content-center">
           <Col >
-            {bannerShort(catalog.description)}
-          </Col>
+            <BannerShort description={catalog.description} />
+         </Col>
         </Row>
       </Carousel.Item>)
   });

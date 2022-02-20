@@ -15,9 +15,9 @@ import { FaEnvelope, FaWhatsapp } from "react-icons/fa";
 };
  */
 const Footer = () => (
-  <React.Fragment>
-    <div className="footer text-center text-lg-start bg-green ">
-      <div className="text-center ">
+  <>
+    <div className="footer bg-green ">
+      <div>
        {/*} Entregas de 1 a 2 días bajo pedido,
           {" llámanos al  "}
         <FaPhone />
@@ -37,7 +37,7 @@ const Footer = () => (
       </div>
       <div> Siguenos en:</div>
     </div>
-  </React.Fragment>
+  </>
 )
 
 export default Footer;
