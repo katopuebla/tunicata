@@ -54,17 +54,16 @@ const Menu = () => {
             </LinkContainer>
             </Navbar>*/}
         <Navbar className="bg-green" variant="light" expand="md">
-            <LinkContainer to="/">
+            {/*<LinkContainer to="/">
                 <Navbar.Brand href="#home">
                     <img
                         alt="Tunicata"
                         src={imageMain}
                         width="150"
                         height="auto"
-                        className="d-inline-block align-top"
-                    />
+                        className="d-inline-block align-top"/>
                 </Navbar.Brand>
-            </LinkContainer>
+            </LinkContainer>*/}
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">

@@ -12,6 +12,7 @@ import HomeView from "./HomeView";
 import CardMenu from "../components/CardMenu";
 import { GeneralContext } from "../contexts/generalContext";
 import BannerShort from "../components/bannerShort";
+import BannerAnimation from '../components/bannerAnimation/bannerAnimation';
 
 const Home = () => {
 
@@ -47,27 +48,28 @@ const Home = () => {
         </Row>*/}
         { isMobile ? (<></>) : (
           <Carousel.Caption>
-            <BannerShort description={catalog.description} />
+            <BannerAnimation description={catalog.description} />
           </Carousel.Caption>
         )}
       </Carousel.Item>)
   });
+
   const showCarruselText = carruselText.map((catalog, index) => {
     return (
       <Carousel.Item interval={5000} key={index}>
-        <Row className="justify-content-center">
-          <Col >
-            <BannerShort description={catalog.description} />
-         </Col>
-        </Row>
-      </Carousel.Item>)
+        {/*<Row className="justify-content-center">
+          <Col >*/}
+            <BannerAnimation description={catalog.description} />
+         {/*</Col>
+        </Row>*/}
+        </Carousel.Item>)
   });
-  /*
+  {/*
     const showProduct = products && products.map((item, index) => {
       const product = item;
       return (<CardMenu item={product} key={index} onCatalogClick={handleCatalogClick} isMobile={isMobile} />)
     });
-  */
+  */}
   const showCatalogs = catalogs && catalogs.map((item, index) => {
 
     return (<CardMenu item={item} key={index} onCatalogClick={handleCatalogClick} isMobile={isMobile} />)

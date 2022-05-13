@@ -1,14 +1,15 @@
 import React from 'react';
 import { Container, Carousel, Row } from 'react-bootstrap';
+import BannerAnimation from '../components/bannerAnimation/bannerAnimation';
 
 const HomeView = ({ showCarrusel, showCarruselText, showCatalogs, isMobile}) => (
   <>
   <Container className='wrapper'>
-    <Carousel>
+    <Carousel fluid>
       {showCarrusel}
     </Carousel>
     {isMobile ? (
-    <Carousel>
+    <Carousel fluid>
       {showCarruselText}
     </Carousel>
     ) : ( <></> )}

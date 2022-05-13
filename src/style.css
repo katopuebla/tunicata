@@ -1,3 +1,10 @@
+div.katoContainer {
+  width: "100%";
+  background-color: firebrick;
+  color: white;
+  padding: 16px;
+}
+
 html,body {
   height: 100%;
   margin: 0;
