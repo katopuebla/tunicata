@@ -8,7 +8,7 @@ import { auth } from '../firebase';
 import AddProduct from '../pages/product/addProduct';
 import ProductsService from '../services/Products-service';
 
-const imageMain = "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FLogo.png?alt=media&token=3f51ea5a-5a30-4819-93b4-34197cefcd4a"
+//const imageMain = "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FLogo.png?alt=media&token=3f51ea5a-5a30-4819-93b4-34197cefcd4a"
 // const logo = "https://firebasestorage.googleapis.com/v0/b/tunicata-web.appspot.com/o/images%2FTunicata_logo.png?alt=media&token=370fc1ea-7586-466e-b7b1-2345a9d69f26";
 
 const Menu = () => {

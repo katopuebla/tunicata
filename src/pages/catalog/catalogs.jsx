@@ -15,16 +15,12 @@ const Catalogs = () => {
 
   const [catalogs, setCatalogs] = useState([]);
   const { productDetail, setProductDetail } = useContext( ProductContext );
-  //const [catalogId, setCatalogId] = useState(useParams());
-  // const [show, setShow] = useState(false);
   const { isMobile } = useContext(GeneralContext);
 
   //functions
-  // const handleClose = () => setShow(false);
   const handleShowCatalog = (catalog) => {
     setProductDetail(catalog);
     history.push(`/product/${catalogId}/${catalog.title}`)
-    //setShow(true);
   };
 
   useEffect(() => {
@@ -44,7 +40,7 @@ const Catalogs = () => {
   }, [catalogId]);
 
   const showCatalogos = catalogs && catalogs.map((catalog, i) =>
-    <CardCatalog catalog={catalog} onShowCatalog={handleShowCatalog} key={i} isMobile={isMobile} />
+    <CardCatalog catalog={catalog} onShowCatalog={handleShowCatalog} isMobile={isMobile} key={i} />
   );
 
   return (

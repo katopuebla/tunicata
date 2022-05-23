@@ -35,10 +35,10 @@ const GeneralRouter = () => {
         <div className='wrapper'>
           <Menu />
           <Switch>
-            <Route path="/" exact component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/login" component={Login} />
             <ProductProvider>
+              <Route path="/" exact component={Home} />
+              <Route path="/about" component={About} />
+              <Route path="/login" component={Login} />
               <Route path="/catalogs/:catalogId/" component={Catalogs} />
               <Route path="/product/:catalogId/:productId" component={Product} />
               <Route path="/list" component={ProductList} />

@@ -1,8 +1,7 @@
 import React from 'react';
 import { Container, Carousel, Row } from 'react-bootstrap';
-import BannerAnimation from '../components/bannerAnimation/bannerAnimation';
 
-const HomeView = ({ showCarrusel, showCarruselText, showCatalogs, isMobile}) => (
+const HomeView = ({ showCarrusel, showCarruselText, showCatalogs, showCatalogCarousel, isMobile}) => (
   <>
   <Container className='wrapper'>
     <Carousel fluid>
@@ -15,6 +14,9 @@ const HomeView = ({ showCarrusel, showCarruselText, showCatalogs, isMobile}) => 
     ) : ( <></> )}
     <Row className="justify-content-lg-center" xs={2} md={4} lg={6}>
       {showCatalogs}
+    </Row>
+    <Row>
+      {showCatalogCarousel}
     </Row>
   </Container>
   </>
