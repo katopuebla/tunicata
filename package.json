@@ -28,6 +28,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "debug": "BROWSER='chrome' BROWSER_ARGS='--remote-debugging-port=9222' react-scripts start",
     "build": "react-scripts build && rm -rf docs && mv build docs",
     "deploy": "firebase deploy",
     "test": "react-scripts test --env=jsdom",
